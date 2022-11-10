@@ -1,0 +1,14 @@
+.cover {
+	padding-bottom: 150px;
+	background: url('https://www.planetware.com/wpimages/2019/11/canada-in-pictures-beautiful-places-to-photograph-morraine-lake.jpg')
+		center / cover no-repeat;
+	margin-bottom: 10px;
+}
+
+.avatar {
+	width: 150px;
+	margin: 0 10px 10px 0;
+}
+.avatar img {
+	width: 100%;
+}
