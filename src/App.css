@@ -1,38 +1,153 @@
-.App {
-  text-align: center;
+/* ==================== RESET ==================== */
+* {
+	padding: 0;
+	margin: 0;
+	border: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+*,
+*:before,
+*:after {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+:focus,
+:active {
+	outline: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+a:focus,
+a:active {
+	outline: none;
 }
 
-.App-link {
-  color: #61dafb;
+nav,
+footer,
+header,
+aside {
+	display: block;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+html,
+body {
+	height: 100%;
+	width: 100%;
+	font-size: 100%;
+	line-height: 1;
+	font-size: 14px;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+
+input,
+button,
+textarea {
+	font-family: inherit;
+}
+
+input::-ms-clear {
+	display: none;
+}
+
+button {
+	cursor: pointer;
+}
+
+button::-moz-focus-inner {
+	padding: 0;
+	border: 0;
+}
+
+a,
+a:visited {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+ul li {
+	list-style: none;
+}
+
+img {
+	vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size: inherit;
+	font-weight: inherit;
+}
+
+/* ====================  ==================== */
+
+.app-wrapper {
+	max-width: 1170px;
+	margin: 0 auto;
+	padding: 0 15px;
+	display: grid;
+	grid-template-areas:
+		'header header'
+		'sidebar content';
+	grid-template-rows: 50px 1fr;
+	grid-template-columns: 2fr 10fr;
+	grid-gap: 10px;
+}
+
+.header {
+	grid-area: header;
+	background-color: rgb(65, 155, 65);
+	padding: 5px;
+}
+.header .header__logo {
+	max-width: 40px;
+}
+.header .header__logo img {
+	width: 100%;
+}
+
+/*.main-page {
+	grid-area: main-page;
+	display: grid;
+	grid-template-areas: 'sidebar content';
+	grid-template-rows: 1fr;
+	grid-template-columns: 2fr 10fr;
+	grid-gap: 10px;
+}*/
+
+.sidebar {
+	grid-area: sidebar;
+	background-color: #333;
+	padding: 15px;
+}
+.sidebar__link {
+	color: white;
+}
+
+.content {
+	grid-area: content;
+	background-color: rgb(199, 199, 223);
+}
+
+.profile .profile__cover {
+	padding-bottom: 150px;
+	background: url('https://www.planetware.com/wpimages/2019/11/canada-in-pictures-beautiful-places-to-photograph-morraine-lake.jpg')
+		center / cover no-repeat;
+	margin-bottom: 10px;
+}
+
+.profile__avatar {
+	width: 150px;
+	margin: 0 10px 10px 0;
+}
+.profile__avatar img {
+	width: 100%;
 }
