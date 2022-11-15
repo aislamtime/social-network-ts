@@ -7,8 +7,14 @@
 
 .avatar {
 	width: 150px;
-	margin: 0 10px 10px 0;
+	margin: 0 10px 10px 10px;
 }
 .avatar img {
 	width: 100%;
+}
+
+.input {
+	border-radius: 5px;
+	padding: 5px;
+	margin: 0 10px 10px 10px;
 }

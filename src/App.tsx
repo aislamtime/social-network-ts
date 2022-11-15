@@ -6,10 +6,10 @@ import { Content } from './components/Content/Content';
 
 function App() {
 	return (
-		<div className="app-wrapper">
+		<div className='app-wrapper'>
 			<Header />
 			<Sidebar />
-      <Content />
+			<Content />
 		</div>
 	);
 }

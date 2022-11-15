@@ -1,5 +1,5 @@
 import React from 'react';
-import { Post } from './Post/Post';
+import { Post } from '../Post/Post';
 import s from './Profile.module.css';
 
 export function Profile() {
@@ -20,7 +20,7 @@ export function Profile() {
 			<div className='profile__posts posts'>
 				<div className='posts__title'>My posts</div>
 				<div className='posts__add'>
-					<textarea name='' id=''></textarea>
+					<textarea className={s.input} name='' id=''></textarea>
 					<button className='add-new-post btn'>Send</button>
 				</div>
 				<div className={s.posts}>
