@@ -3,6 +3,15 @@ import { Post } from '../Post/Post';
 import s from './Profile.module.css';
 
 export function Profile() {
+	const posts = [
+		{ id: 1, message: 'I am from Mars', likeCount: 13 },
+		{ id: 2, message: 'My name is Alesha', likeCount: 18 },
+		{ id: 3, message: 'Hi, how are you?', likeCount: 16 },
+		{ id: 4, message: "Hey, it's my first app!", likeCount: 32 },
+	];
+
+	const postsElements = posts.map((el) => <Post message={el.message} />);
+
 	return (
 		<div className={s.profile}>
 			<div className={s.cover}>
@@ -23,10 +32,7 @@ export function Profile() {
 					<textarea className={s.input} name='' id=''></textarea>
 					<button className='add-new-post btn'>Send</button>
 				</div>
-				<div className={s.posts}>
-					<Post message='Hi, how are you?' />
-					<Post message="Hey, it's my first app!" />
-				</div>
+				<div className={s.posts}>{postsElements}</div>
 			</div>
 		</div>
 	);
