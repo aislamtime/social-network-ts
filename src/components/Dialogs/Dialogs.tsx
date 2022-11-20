@@ -13,27 +13,11 @@ type MessagePropsType = {
 	message: string;
 };
 
-export function Dialogs() {
-	const dialogs: Array<DialogsItemPropsType> = [
-		{ id: 1, name: 'Andrey' },
-		{ id: 2, name: 'Nikita' },
-		{ id: 3, name: 'Sasha' },
-		{ id: 4, name: 'Nika' },
-		{ id: 5, name: 'Tima' },
-		{ id: 6, name: 'Nastya' },
-	];
-
-	const messages: Array<MessagePropsType> = [
-		{ id: 1, message: 'Hi!' },
-		{ id: 2, message: 'How are you?' },
-		{ id: 3, message: 'Yo! Wats up?' },
-		{ id: 4, message: 'Yo' },
-	];
-
-	const dialogsElements = dialogs.map((el) => (
+export function Dialogs(props: any) {
+	const dialogsElements = props.dialogs.map((el) => (
 		<DialogsItem name={el.name} id={el.id} />
 	));
-	const messagesElements = messages.map((el) => (
+	const messagesElements = props.messages.map((el) => (
 		<Message id={el.id} message={el.message} />
 	));
 
