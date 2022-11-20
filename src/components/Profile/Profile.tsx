@@ -1,9 +1,16 @@
 import React from 'react';
+import { ProfilePageType } from '../../redux/state';
 import { Post } from '../Post/Post';
 import s from './Profile.module.css';
 
-export function Profile(props: any) {
-	const postsElements = props.posts.map((el) => <Post message={el.message} />);
+type ProfilePropsType = {
+	state: ProfilePageType;
+};
+
+export function Profile(props: ProfilePropsType) {
+	const postsElements = props.state.posts.map((el) => (
+		<Post message={el.message} />
+	));
 
 	return (
 		<div className={s.profile}>

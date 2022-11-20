@@ -6,17 +6,20 @@ import { Dialogs } from '../Dialogs/Dialogs';
 import { News } from '../News/News';
 import { Music } from '../Music/Music';
 import { Settings } from '../Settings/Settings';
+import { RootStateType } from '../../redux/state';
 
-export function Content(props: any) {
+type ContentPropsType = {
+	state: RootStateType;
+};
+
+export function Content(props: ContentPropsType) {
 	return (
 		<div className={s.content}>
 			<Routes>
-				<Route path='/' element={<Profile posts={props.posts} />} />
+				<Route path='/' element={<Profile state={props.state.profilePage} />} />
 				<Route
 					path='/dialogs'
-					element={
-						<Dialogs dialogs={props.dialogs} messages={props.messages} />
-					}
+					element={<Dialogs state={props.state.dialogsPage} />}
 				/>
 				<Route path='/news' element={<News />} />
 				<Route path='/music' element={<Music />} />

@@ -1,23 +1,18 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { isPropertyAccessChain } from 'typescript';
+import { DialogsPageType, DialogType, MessageType } from '../../redux/state';
 import s from './Dialogs.module.css';
 
-type DialogsItemPropsType = {
-	id: number;
-	name: string;
+type DialogsPropsType = {
+	state: DialogsPageType;
 };
 
-type MessagePropsType = {
-	id: number;
-	message: string;
-};
-
-export function Dialogs(props: any) {
-	const dialogsElements = props.dialogs.map((el) => (
+export function Dialogs(props: DialogsPropsType) {
+	const dialogsElements = props.state.dialogs.map((el) => (
 		<DialogsItem name={el.name} id={el.id} />
 	));
-	const messagesElements = props.messages.map((el) => (
+	const messagesElements = props.state.messages.map((el) => (
 		<Message id={el.id} message={el.message} />
 	));
 
@@ -29,7 +24,7 @@ export function Dialogs(props: any) {
 	);
 }
 
-function DialogsItem(props: DialogsItemPropsType) {
+function DialogsItem(props: DialogType) {
 	const path = '/dialogs/' + props.id;
 
 	return (
@@ -39,6 +34,6 @@ function DialogsItem(props: DialogsItemPropsType) {
 	);
 }
 
-function Message(props: MessagePropsType) {
+function Message(props: MessageType) {
 	return <div className={s.message}>{props.message}</div>;
 }
