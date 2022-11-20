@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { isPropertyAccessChain } from 'typescript';
 import { DialogsPageType, DialogType, MessageType } from '../../redux/state';
 import s from './Dialogs.module.css';
 

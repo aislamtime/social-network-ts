@@ -8,7 +8,7 @@
 }
 .item {
 	background-color: rgb(247, 103, 103);
-	margin-bottom: 5px;
+	margin-bottom: 3px;
 	border-radius: 3px;
 	transition: all 0.3s ease 0s;
 }

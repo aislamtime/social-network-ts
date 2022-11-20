@@ -1,13 +1,15 @@
 .sidebar {
 	grid-area: sidebar;
 	background-color: #333;
-	padding: 15px;
+	padding: 5px;
 	height: calc(100vh - 60px);
 }
-
+.links {
+	margin-bottom: 50px;
+}
 .link {
 	/*background-color: rgb(60, 60, 63);*/
-	margin-bottom: 5px;
+	/*margin-bottom: 5px;*/
 	border-radius: 3px;
 	transition: all 0.3s ease 0s;
 }
@@ -16,8 +18,7 @@
 }
 
 .link a {
-	padding: 5px 10px;
-
+	padding: 10px;
 	display: inline-block;
 	color: white;
 	text-decoration: none;
@@ -29,4 +30,29 @@
 
 .link a.active {
 	color: gold;
+}
+
+/* ================= Block 'My friends' ================== */
+
+.friendsBlock {
+	padding: 10px;
+}
+.friendsBlockTitle {
+	color: white;
+	font-size: 16px;
+	margin-bottom: 15px;
+}
+.friendsRow {
+	display: flex;
+	flex-wrap: wrap;
+}
+.friendsBlockItem {
+	flex: 0 0 33.333%;
+	padding: 7px 0;
+}
+.friendAvatar {
+	width: 40px;
+	height: 40px;
+	cursor: pointer;
+	border-radius: 50%;
 }
