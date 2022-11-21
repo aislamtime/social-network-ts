@@ -9,7 +9,7 @@ export type DialogType = {
 export type PostType = {
 	id: number;
 	message: string;
-	likeCount: number;
+	likesCount: number;
 };
 export type DialogsPageType = {
 	dialogs: Array<DialogType>;
@@ -27,10 +27,10 @@ export type RootStateType = {
 export const state: RootStateType = {
 	profilePage: {
 		posts: [
-			{ id: 1, message: 'I am from Mars', likeCount: 13 },
-			{ id: 2, message: 'My name is Alesha', likeCount: 18 },
-			{ id: 3, message: 'Hi, how are you?', likeCount: 16 },
-			{ id: 4, message: "Hey, it's my first app! ", likeCount: 32 },
+			{ id: 1, message: 'I am from Mars', likesCount: 13 },
+			{ id: 2, message: 'My name is Alesha', likesCount: 18 },
+			{ id: 3, message: 'Hi, how are you?', likesCount: 16 },
+			{ id: 4, message: "Hey, it's my first app! ", likesCount: 32 },
 		],
 	},
 	dialogsPage: {

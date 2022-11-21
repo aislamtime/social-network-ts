@@ -8,9 +8,7 @@ type ProfilePropsType = {
 };
 
 export function Profile(props: ProfilePropsType) {
-	const postsElements = props.state.posts.map((el) => (
-		<Post message={el.message} />
-	));
+	const postsElements = props.state.posts.map((el) => <Post state={el} />);
 
 	return (
 		<div className={s.profile}>

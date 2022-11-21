@@ -1,8 +1,9 @@
 import React from 'react';
+import { PostType } from '../../redux/state';
 import s from './Post.module.css';
 
 type PropsType = {
-	message: string;
+	state: PostType;
 };
 
 export function Post(props: PropsType) {
@@ -14,8 +15,15 @@ export function Post(props: PropsType) {
 					alt=''
 					className={s.avatar}
 				/>
-				<div className={s.text}>{props.message}</div>
-				<div className={s.delete}>Delete post</div>
+				<div className={s.text}>{props.state.message}</div>
+				<div className={s.likesBlock}>
+					<img
+						src='https://pngimg.com/uploads/like/like_PNG84.png'
+						className={s.like}
+					></img>
+					<div className={s.likesCount}>{props.state.likesCount}</div>
+				</div>
+				{/*<div className={s.delete}>Delete post</div>*/}
 			</div>
 		</div>
 	);
