@@ -30,7 +30,7 @@ export const state: RootStateType = {
 			{ id: 1, message: 'I am from Mars', likeCount: 13 },
 			{ id: 2, message: 'My name is Alesha', likeCount: 18 },
 			{ id: 3, message: 'Hi, how are you?', likeCount: 16 },
-			{ id: 4, message: "Hey, it's my first app!", likeCount: 32 },
+			{ id: 4, message: "Hey, it's my first app! ", likeCount: 32 },
 		],
 	},
 	dialogsPage: {
@@ -45,7 +45,7 @@ export const state: RootStateType = {
 		messages: [
 			{ id: 1, message: 'Hi!' },
 			{ id: 2, message: 'How are you?' },
-			{ id: 3, message: 'Yo! Wats up?' },
+			{ id: 3, message: 'Yo! Wats up? ' },
 			{ id: 4, message: 'Yo' },
 		],
 	},

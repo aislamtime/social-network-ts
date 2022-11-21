@@ -34,5 +34,54 @@
 	padding: 10px;
 	border-left: 1px solid white;
 }
+
+/*======================= Message ==========================*/
+
 .message {
+	font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+	display: flex;
+	align-items: end;
+	margin-bottom: 3px;
+}
+
+.avatar {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+}
+.messageBlock {
+	background-color: rgba(255, 255, 255, 0.5);
+	border-radius: 5px;
+	border-bottom-left-radius: 0;
+	padding: 5px 45px 20px 10px;
+	max-width: 400px;
+	position: relative;
+	margin: 0 0 0 15px;
+}
+.messageBlock:before {
+	content: '';
+	position: absolute;
+	width: 15px;
+	height: 15px;
+	left: -15px;
+	bottom: 0;
+	background: radial-gradient(
+		circle at 0 0,
+		rgba(0, 0, 0, 0) 15px,
+		rgba(255, 255, 255, 0.5) 0
+	);
+}
+.name {
+	font-weight: 700;
+	margin-bottom: 3px;
+	color: rgb(69, 69, 109);
+}
+.text {
+	color: #333;
+}
+.time {
+	position: absolute;
+	right: 5px;
+	bottom: 5px;
+	color: grey;
 }

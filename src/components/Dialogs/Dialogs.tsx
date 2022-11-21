@@ -34,5 +34,18 @@ function DialogsItem(props: DialogType) {
 }
 
 function Message(props: MessageType) {
-	return <div className={s.message}>{props.message}</div>;
+	return (
+		<div className={s.message}>
+			<img
+				src='https://i.pinimg.com/originals/2e/2e/21/2e2e2125ee53807c2d77b34773f84b5c.jpg'
+				alt=''
+				className={s.avatar}
+			/>
+			<div className={s.messageBlock}>
+				<div className={s.name}>Nikitos</div>
+				<div className={s.text}>{props.message}</div>
+				<div className={s.time}>12:30</div>
+			</div>
+		</div>
+	);
 }
