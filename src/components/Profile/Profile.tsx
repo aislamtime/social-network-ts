@@ -25,10 +25,16 @@ export function Profile(props: ProfilePropsType) {
 				<div className='profile__description'></div>
 			</div>
 			<div className='profile__posts posts'>
-				<div className='posts__title'>My posts</div>
-				<div className='posts__add'>
-					<textarea className={s.input} name='' id=''></textarea>
-					<button className='add-new-post btn'>Send</button>
+				<div className={s.myPostsTitle}>My posts</div>
+				<div className={s.inputAndButton}>
+					<textarea
+						cols={60}
+						rows={3}
+						className={s.input}
+						name=''
+						id=''
+					></textarea>
+					<button className={s.buttonSend}>Send</button>
 				</div>
 				<div className={s.posts}>{postsElements}</div>
 			</div>

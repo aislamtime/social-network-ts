@@ -11,10 +11,39 @@
 }
 .avatar img {
 	width: 100%;
+	border-radius: 5px;
 }
 
 .input {
 	border-radius: 5px;
 	padding: 5px;
 	margin: 0 10px 10px 10px;
+	margin: 0 10px 0 10px;
+}
+
+.myPostsTitle {
+	font-size: 18px;
+	font-weight: 700;
+	margin: 0 0 5px 10px;
+}
+.buttonSend {
+	width: 100px;
+	height: 40px;
+	border-radius: 5px;
+	color: white;
+	background-color: rgba(68, 124, 68, 0.9);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 16px;
+	font-weight: 700;
+	letter-spacing: 2px;
+	transition: all 0.3s ease 0s;
+}
+.buttonSend:hover {
+	background-color: rgba(68, 124, 68, 0.6);
+}
+.inputAndButton {
+	display: flex;
+	align-items: end;
 }
