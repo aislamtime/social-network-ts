@@ -31,6 +31,9 @@
 }
 
 .messages {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 	padding: 10px;
 	border-left: 1px solid white;
 }
@@ -84,4 +87,23 @@
 	right: 5px;
 	bottom: 5px;
 	color: grey;
+}
+
+/*======================= addMessage =======================*/
+
+.addMessageBlock {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.addMessageInput {
+	padding: 5px;
+	border-radius: 5px;
+	flex: 0 1 79%;
+}
+.addMessageButton {
+	padding: 5px;
+	border-radius: 5px;
+	flex: 0 1 20%;
 }
