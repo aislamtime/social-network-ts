@@ -1,3 +1,5 @@
+import { rerenderDomTree } from "../render";
+
 export type MessageType = {
 	id: number;
 	message: string;
@@ -51,3 +53,15 @@ export const state: RootStateType = {
 	},
 };
 
+
+
+export const addPost = (newMessage: string) => {
+  debugger;
+  const newPost = {
+    id: 5,
+    message: newMessage,
+    likesCount: 0,
+  };
+  state.profilePage.posts.push(newPost);
+  rerenderDomTree(state, addPost)
+};

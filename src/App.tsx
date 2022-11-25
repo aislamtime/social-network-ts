@@ -6,17 +6,18 @@ import { Content } from './components/Content/Content';
 import { RootStateType } from './redux/state';
 
 type AppProps = {
-	state: RootStateType;
+  state: RootStateType;
+  addPost: (newMessage: string) => void
 };
 
 function App(props: AppProps) {
-	return (
-		<div className='app-wrapper'>
-			<Header />
-			<Sidebar />
-			<Content state={props.state} />
-		</div>
-	);
+  return (
+    <div className='app-wrapper'>
+      <Header />
+      <Sidebar />
+      <Content state={props.state} addPost={props.addPost} />
+    </div>
+  );
 }
 
 export default App;

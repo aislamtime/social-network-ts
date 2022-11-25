@@ -5,16 +5,19 @@ import { Post } from './Post/Post';
 
 type MyPostsType = {
   posts: Array<PostType>
+  addPost: (newMessage: string) => void
 }
 
 export function MyPosts(props: MyPostsType) {
 
   const postsElements = props.posts.map((el) => <Post state={el} />);
 
-  const textareaElementRef = useRef<HTMLTextAreaElement>(null);
+  const textareaElementRef = useRef<HTMLTextAreaElement | null>(null);
 
   const onAddPostClickHandler = () => {
-    //alert(textareaElementRef.current.value)
+    debugger;
+    props.addPost(textareaElementRef.current.value)
+    textareaElementRef.current.value = ''
   }
 
   return (

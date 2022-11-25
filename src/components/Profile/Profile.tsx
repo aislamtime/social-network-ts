@@ -5,6 +5,7 @@ import s from './Profile.module.css';
 
 type ProfilePropsType = {
   state: ProfilePageType;
+  addPost: (newMessage: string) => void
 };
 
 export function Profile(props: ProfilePropsType) {
@@ -25,7 +26,7 @@ export function Profile(props: ProfilePropsType) {
         <div className='profile__description'></div>
       </div>
 
-      <MyPosts posts={props.state.posts} />
+      <MyPosts posts={props.state.posts} addPost={props.addPost} />
 
     </div>
   );
