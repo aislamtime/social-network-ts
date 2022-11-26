@@ -1,4 +1,4 @@
-import { rerenderDomTree } from "../render";
+let rerenderEntireTree = () => {}
 
 export type MessageType = {
 	id: number;
@@ -63,5 +63,9 @@ export const addPost = (newMessage: string) => {
     likesCount: 0,
   };
   state.profilePage.posts.push(newPost);
-  rerenderDomTree(state, addPost)
+  rerenderEntireTree()
 };
+
+export const subscribe = (observer: any) => {
+    rerenderEntireTree = observer
+} 
