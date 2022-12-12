@@ -10,18 +10,18 @@ const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
 
-export const rerenderEntireTree = (store: StoreType) => {
+export const rerenderEntireTree = () => {
     root.render(
         <React.StrictMode>
             <BrowserRouter>
                 {/* Прокидывая addPost надо его забайндить на store, что бы при вызове метода addPost из другого файла, this не изменился */}
-                <App state={store.getState()} addPost={store.addPost.bind(store)} />
+                <App state={store.getState()} dispatch={store.dispatch.bind(store)} />
             </BrowserRouter>
         </React.StrictMode>
     );
 };
 
-rerenderEntireTree(store);
+rerenderEntireTree();
 
 store.render(rerenderEntireTree);
 

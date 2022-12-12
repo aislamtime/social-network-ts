@@ -6,34 +6,34 @@ import { Dialogs } from '../Dialogs/Dialogs';
 import { News } from '../News/News';
 import { Music } from '../Music/Music';
 import { Settings } from '../Settings/Settings';
-import { RootStateType } from '../../redux/state';
+import { AllActionsType, RootStateType } from '../../redux/state';
 
 type ContentPropsType = {
-	state: RootStateType;
-	addPost: (newMessage: string) => void;
+    state: RootStateType;
+    dispatch: (action: AllActionsType) => void;
 };
 
 export function Content(props: ContentPropsType) {
-	return (
-		<div className={s.content}>
-			<Routes>
-				<Route
-					path='/'
-					element={
-						<Profile
-							profilePage={props.state.profilePage}
-							addPost={props.addPost}
-						/>
-					}
-				/>
-				<Route
-					path='/dialogs'
-					element={<Dialogs dialogsPage={props.state.dialogsPage} />}
-				/>
-				<Route path='/news' element={<News />} />
-				<Route path='/music' element={<Music />} />
-				<Route path='/settings' element={<Settings />} />
-			</Routes>
-		</div>
-	);
+    return (
+        <div className={s.content}>
+            <Routes>
+                <Route
+                    path='/'
+                    element={
+                        <Profile
+                            profilePage={props.state.profilePage}
+                            dispatch={props.dispatch}
+                        />
+                    }
+                />
+                <Route
+                    path='/dialogs'
+                    element={<Dialogs dialogsPage={props.state.dialogsPage} />}
+                />
+                <Route path='/news' element={<News />} />
+                <Route path='/music' element={<Music />} />
+                <Route path='/settings' element={<Settings />} />
+            </Routes>
+        </div>
+    );
 }

@@ -22,14 +22,23 @@ export type RootStateType = {
 	profilePage: ProfilePageType;
 	dialogsPage: DialogsPageType;
 };
-
 export type StoreType = {
 	_state: RootStateType;
 	_onChange: () => void;
-	render: (callBack: (store: StoreType) => void) => void;
+	render: (callBack: () => void) => void;
 	getState: () => RootStateType;
-	addPost: (newPostText: string) => void;
+	_addPost: (newPostText: string) => void;
+    dispatch: (action: AllActionsType) => void
 };
+
+//=======================Actions Types============================
+
+export type AllActionsType = AddPostAction
+
+type AddPostAction = {
+    type: 'ADD-POST'
+    newPostText: string
+}
 
 export const store: StoreType = {
 	_state: {
@@ -61,13 +70,15 @@ export const store: StoreType = {
 	_onChange() {
 		console.log('state changed');
 	},
+
 	render(callBack: () => void) {
 		this._onChange = callBack;
 	},
 	getState() {
 		return this._state;
 	},
-	addPost(newPostText: string) {
+
+	_addPost(newPostText: string) {
 		const newPost = {
 			id: 5,
 			message: newPostText,
@@ -76,4 +87,9 @@ export const store: StoreType = {
 		this._state.profilePage.posts.push(newPost);
 		this._onChange();
 	},
+    dispatch(action) {
+        if ( action.type === 'ADD-POST' ) {
+            this._addPost(action.newPostText)
+        }
+    }
 };
