@@ -7,17 +7,18 @@ import { BrowserRouter } from 'react-router-dom';
 import { store } from './redux/state';
 
 const root = ReactDOM.createRoot(
-	document.getElementById('root') as HTMLElement
+    document.getElementById('root') as HTMLElement
 );
 
 export const rerenderEntireTree = () => {
-	root.render(
-		<React.StrictMode>
-			<BrowserRouter>
-				<App state={store.getState()} addPost={store.addPost} />
-			</BrowserRouter>
-		</React.StrictMode>
-	);
+    root.render(
+        <React.StrictMode>
+            <BrowserRouter>
+                {/* Прокидывая addPost надо его забайндить на store, что бы при вызове метода addPost из другого файла, this не изменился */}
+                <App state={store.getState()} addPost={store.addPost.bind(store)} />
+            </BrowserRouter>
+        </React.StrictMode>
+    );
 };
 
 rerenderEntireTree();

@@ -22,32 +22,6 @@ export type RootStateType = {
 	profilePage: ProfilePageType;
 	dialogsPage: DialogsPageType;
 };
-export const state: RootStateType = {
-	profilePage: {
-		posts: [
-			{ id: 1, message: 'I am from Mars', likesCount: 13 },
-			{ id: 2, message: 'My name is Alesha', likesCount: 18 },
-			{ id: 3, message: 'Hi, how are you?', likesCount: 16 },
-			{ id: 4, message: "Hey, it's my first app! ", likesCount: 32 },
-		],
-	},
-	dialogsPage: {
-		dialogs: [
-			{ id: 1, name: 'Andrey' },
-			{ id: 2, name: 'Nikita' },
-			{ id: 3, name: 'Sasha' },
-			{ id: 4, name: 'Nika' },
-			{ id: 5, name: 'Tima' },
-			{ id: 6, name: 'Nastya' },
-		],
-		messages: [
-			{ id: 1, message: 'Hi!' },
-			{ id: 2, message: 'How are you?' },
-			{ id: 3, message: 'Yo! Wats up? ' },
-			{ id: 4, message: 'Yo' },
-		],
-	},
-};
 
 export type StoreType = {
 	_state: RootStateType;
@@ -90,10 +64,10 @@ export const store: StoreType = {
 	render(callBack: () => void) {
 		this._onChange = callBack;
 	},
-	getState: function () {
+	getState() {
 		return this._state;
 	},
-	addPost: function (newPostText: string) {
+	addPost(newPostText: string) {
 		const newPost = {
 			id: 5,
 			message: newPostText,
