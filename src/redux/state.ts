@@ -26,7 +26,7 @@ export type RootStateType = {
 export type StoreType = {
 	_state: RootStateType;
 	_onChange: () => void;
-	render: (callBack: () => void) => void;
+	render: (callBack: (store: StoreType) => void) => void;
 	getState: () => RootStateType;
 	addPost: (newPostText: string) => void;
 };
