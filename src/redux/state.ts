@@ -35,10 +35,15 @@ export type StoreType = {
 
 export type AllActionsType = AddPostAction
 
-type AddPostAction = {
+export type AddPostAction = {
     type: 'ADD-POST'
     newPostText: string
 }
+
+export const addPostAC = (newPostText: string): AddPostAction => ({
+    type: "ADD-POST",
+    newPostText: newPostText
+})
 
 export const store: StoreType = {
 	_state: {
@@ -93,3 +98,4 @@ export const store: StoreType = {
         }
     }
 };
+
