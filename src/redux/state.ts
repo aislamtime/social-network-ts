@@ -33,17 +33,21 @@ export type StoreType = {
 
 //=======================Actions Types============================
 
-export type AllActionsType = AddPostAction
+export type AllActionsType = ReturnType<typeof addPostAC>
 
-export type AddPostAction = {
-    type: 'ADD-POST'
-    newPostText: string
+//export type AddPostAction = {
+//    type: 'ADD-POST'
+//    newPostText: string
+//}
+
+//export type AddPostAction = ReturnType<typeof addPostAC>
+
+export const addPostAC = (newPostText: string) => {
+    return {
+        type: "ADD-POST",
+        newPostText: newPostText
+    } as const 
 }
-
-export const addPostAC = (newPostText: string): AddPostAction => ({
-    type: "ADD-POST",
-    newPostText: newPostText
-})
 
 export const store: StoreType = {
 	_state: {
