@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import { NavLink } from 'react-router-dom';
 import { AllActionsType, changeMessageTextAC, DialogsPageType, DialogType, MessageType, sendMessageAC } from '../../redux/state';
 import s from './Dialogs.module.css';
@@ -16,13 +16,11 @@ export function Dialogs(props: DialogsPropsType) {
         <Message id={el.id} message={el.message} />
     ));
 
-    const addMessageInputRef = React.createRef<HTMLInputElement>()
 
-    const onInputChangeHandler = () => {
-        if (addMessageInputRef.current) {
-            props.dispatch(changeMessageTextAC(addMessageInputRef.current.value))
-            console.log(props.dialogsPage.newMessageText);
-        }
+    const onInputChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        props.dispatch(changeMessageTextAC(e.currentTarget.value))
+        console.log(props.dialogsPage.newMessageText);
+
     }
 
     const sendMessage = () => {
@@ -35,7 +33,9 @@ export function Dialogs(props: DialogsPropsType) {
             <div className={s.messages}>
                 <div>{messagesElements}</div>
                 <div className={s.addMessageBlock}>
-                    <input className={s.addMessageInput} value={props.dialogsPage.newMessageText} ref={addMessageInputRef} onChange={onInputChangeHandler} />
+                    <input className={s.addMessageInput}
+                        value={props.dialogsPage.newMessageText}
+                        onChange={onInputChangeHandler} />
                     <button className={s.addMessageButton} onClick={sendMessage}>Send</button>
                 </div>
             </div>
