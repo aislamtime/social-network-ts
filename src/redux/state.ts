@@ -1,3 +1,7 @@
+const ADD_POST = 'ADD-POST';
+const CHANGE_MESSAGE_TEXT = 'CHANGE-MESSAGE-TEXT';
+const SEDN_MESSAGE = 'SEND-MESSAGE';
+
 export type MessageType = {
 	id: number;
 	message: string;
@@ -14,6 +18,7 @@ export type PostType = {
 export type DialogsPageType = {
 	dialogs: Array<DialogType>;
 	messages: Array<MessageType>;
+    newMessageText: string
 };
 export type ProfilePageType = {
 	posts: Array<PostType>;
@@ -28,26 +33,35 @@ export type StoreType = {
 	render: (callBack: () => void) => void;
 	getState: () => RootStateType;
 	_addPost: (newPostText: string) => void;
+    _onChangeNewMessageText: (newMessgeText: string) => void
+    _sendMessage: () => void
     dispatch: (action: AllActionsType) => void
 };
 
 //=======================Actions Types============================
 
-export type AllActionsType = ReturnType<typeof addPostAC>
-
-//export type AddPostAction = {
-//    type: 'ADD-POST'
-//    newPostText: string
-//}
-
-//export type AddPostAction = ReturnType<typeof addPostAC>
+export type AllActionsType = 
+    ReturnType<typeof addPostAC> 
+    | ReturnType<typeof changeMessageTextAC> 
+    | ReturnType<typeof sendMessageAC>;
 
 export const addPostAC = (newPostText: string) => {
     return {
-        type: "ADD-POST",
+        type: ADD_POST,
         newPostText: newPostText
-    } as const 
-}
+    } as const;
+};
+export const changeMessageTextAC = (newMessageText: string) => {
+    return {
+        type: CHANGE_MESSAGE_TEXT,
+        newMessageText: newMessageText
+    } as const;
+};
+export const sendMessageAC = () => {
+    return {
+        type: SEDN_MESSAGE,
+    } as const;
+};
 
 export const store: StoreType = {
 	_state: {
@@ -74,6 +88,7 @@ export const store: StoreType = {
 				{ id: 3, message: 'Yo! Wats up? ' },
 				{ id: 4, message: 'Yo' },
 			],
+            newMessageText: ''
 		},
 	},
 	_onChange() {
@@ -96,9 +111,23 @@ export const store: StoreType = {
 		this._state.profilePage.posts.push(newPost);
 		this._onChange();
 	},
+    _onChangeNewMessageText(newMessageText: string) {
+        this._state.dialogsPage.newMessageText = newMessageText;
+        this._onChange()
+    },
+    _sendMessage() {
+        const message = {id: 5, message: this._state.dialogsPage.newMessageText};
+        this._state.dialogsPage.messages.push(message);
+        this._state.dialogsPage.newMessageText = '';
+        this._onChange()
+    },
     dispatch(action) {
-        if ( action.type === 'ADD-POST' ) {
+        if ( action.type === ADD_POST ) {
             this._addPost(action.newPostText)
+        } else if (action.type === CHANGE_MESSAGE_TEXT) {
+            this._onChangeNewMessageText(action.newMessageText)
+        } else if (action.type === SEDN_MESSAGE) {
+            this._sendMessage()
         }
     }
 };
