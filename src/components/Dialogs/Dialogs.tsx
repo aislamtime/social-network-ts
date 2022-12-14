@@ -29,16 +29,17 @@ export function Dialogs(props: DialogsPropsType) {
 
     return (
         <div className={s.dialogs}>
-            <div className={s.dialogsItems}>{dialogsElements}</div>
             <div className={s.messages}>
                 <div>{messagesElements}</div>
                 <div className={s.addMessageBlock}>
                     <input className={s.addMessageInput}
+                        placeholder={'Send your message..'}
                         value={props.dialogsPage.newMessageText}
                         onChange={onInputChangeHandler} />
                     <button className={s.addMessageButton} onClick={sendMessage}>Send</button>
                 </div>
             </div>
+            <div className={s.dialogsItems}>{dialogsElements}</div>
         </div>
     );
 }
