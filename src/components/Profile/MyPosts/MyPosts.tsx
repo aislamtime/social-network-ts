@@ -1,14 +1,13 @@
 import React, { useRef } from 'react';
 import s from './MyPosts.module.css';
-import { addPostAC, AllActionsType, PostType } from './../../../redux/state';
+import { AllActionsType, PostType } from '../../../redux/store';
 import { Post } from './Post/Post';
+import { addPostAC } from '../../../redux/profile-reduser';
 
 type MyPostsType = {
     posts: Array<PostType>;
     dispatch: (action: AllActionsType) => void;
 };
-
-
 
 export function MyPosts(props: MyPostsType) {
     const postsElements = props.posts.map((el) => <Post state={el} />);

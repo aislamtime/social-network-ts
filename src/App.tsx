@@ -3,10 +3,10 @@ import './App.css';
 import { Header } from './components/Header/Header';
 import { Sidebar } from './components/Sidebar/Sidebar';
 import { Content } from './components/Content/Content';
-import { AllActionsType, RootStateType } from './redux/state';
+import { AllActionsType, StateType } from './redux/store';
 
 type AppProps = {
-    state: RootStateType;
+    state: StateType;
     dispatch: (action: AllActionsType) => void;
 };
 

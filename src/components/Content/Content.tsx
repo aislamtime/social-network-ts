@@ -6,10 +6,10 @@ import { Dialogs } from '../Dialogs/Dialogs';
 import { News } from '../News/News';
 import { Music } from '../Music/Music';
 import { Settings } from '../Settings/Settings';
-import { AllActionsType, RootStateType } from '../../redux/state';
+import { AllActionsType, StateType } from '../../redux/store';
 
 type ContentPropsType = {
-    state: RootStateType;
+    state: StateType;
     dispatch: (action: AllActionsType) => void;
 };
 

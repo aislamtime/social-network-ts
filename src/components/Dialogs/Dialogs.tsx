@@ -1,6 +1,7 @@
 import React, { ChangeEvent } from 'react';
 import { NavLink } from 'react-router-dom';
-import { AllActionsType, changeMessageTextAC, DialogsPageType, DialogType, MessageType, sendMessageAC } from '../../redux/state';
+import { changeMessageTextAC, sendMessageAC } from '../../redux/dialogs-reduser';
+import { AllActionsType, DialogsPageType, DialogType, MessageType } from '../../redux/store';
 import s from './Dialogs.module.css';
 
 type DialogsPropsType = {
