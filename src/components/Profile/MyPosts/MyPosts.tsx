@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import s from './MyPosts.module.css';
 import { AllActionsType, PostType } from '../../../redux/store';
 import { Post } from './Post/Post';
-import { addPostAC } from '../../../redux/profile-reduser';
+import { addPostAC } from '../../../redux/reducers/profile-reduser';
 
 type MyPostsType = {
     posts: Array<PostType>;

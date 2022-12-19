@@ -1,10 +1,28 @@
-import { AllActionsType, DialogsPageType } from "./store";
+import { AllActionsType, DialogsPageType } from "../store";
 
 
 const CHANGE_MESSAGE_TEXT = 'CHANGE-MESSAGE-TEXT';
 const SEDN_MESSAGE = 'SEND-MESSAGE';
 
-const dialogsReduser = (state: DialogsPageType, action: AllActionsType): DialogsPageType => {
+const initialState = {
+    dialogs: [
+        { id: 1, name: 'Andrey' },
+        { id: 2, name: 'Nikita' },
+        { id: 3, name: 'Sasha' },
+        { id: 4, name: 'Nika' },
+        { id: 5, name: 'Tima' },
+        { id: 6, name: 'Nastya' },
+    ],
+    messages: [
+        { id: 1, message: 'Hi!' },
+        { id: 2, message: 'How are you?' },
+        { id: 3, message: 'Yo! Wats up? ' },
+        { id: 4, message: 'Yo' },
+    ],
+    newMessageText: ''
+};
+
+const dialogsReduser = (state: DialogsPageType = initialState, action: AllActionsType): DialogsPageType => {
     switch (action.type) {
         case CHANGE_MESSAGE_TEXT:
             state.newMessageText = action.newMessageText;

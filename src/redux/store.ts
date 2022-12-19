@@ -1,6 +1,6 @@
-import dialogsReduser, { ChangeMessageTextACType, SendMessageACType } from "./dialogs-reduser";
-import profileReduser, { AddPostACType } from "./profile-reduser";
-import sidebarReduser from "./sidebar-reduser";
+import dialogsReduser, { ChangeMessageTextACType, SendMessageACType } from "./reducers/dialogs-reduser";
+import profileReduser, { AddPostACType } from "./reducers/profile-reduser";
+import sidebarReduser from "./reducers/sidebar-reduser";
 
 const ADD_POST = 'ADD-POST';
 

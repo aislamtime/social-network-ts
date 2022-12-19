@@ -1,8 +1,17 @@
-import { AllActionsType, ProfilePageType } from "./store";
+import { AllActionsType, ProfilePageType } from "../store";
 
 const ADD_POST = 'ADD-POST';
 
-const profileReduser = (state: ProfilePageType, action: AllActionsType) => {
+const initialState = {
+    posts: [
+        { id: 1, message: 'I am from Mars', likesCount: 13 },
+        { id: 2, message: 'My name is Alesha', likesCount: 18 },
+        { id: 3, message: 'Hi, how are you?', likesCount: 16 },
+        { id: 4, message: "Hey, it's my first app! ", likesCount: 32 },
+    ],
+};
+
+const profileReduser = (state: ProfilePageType = initialState, action: AllActionsType) => {
     switch (action.type) {
         case ADD_POST:
             const newPost = {
