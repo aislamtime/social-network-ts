@@ -1,51 +1,46 @@
-import dialogsReduser, { ChangeMessageTextACType, SendMessageACType } from "./reducers/dialogs-reduser";
-import profileReduser, { AddPostACType } from "./reducers/profile-reduser";
-import sidebarReduser from "./reducers/sidebar-reduser";
-
-const ADD_POST = 'ADD-POST';
+import dialogsReduser, { ChangeMessageTextACType, SendMessageACType } from './reducers/dialogs-reduser'
+import profileReduser, { AddPostACType, ChangeNewPostTextACType } from './reducers/profile-reduser'
+import sidebarReduser from './reducers/sidebar-reduser'
 
 export type MessageType = {
-	id: number;
-	message: string;
-};
+	id: number
+	message: string
+}
 export type DialogType = {
-	id: number;
-	name: string;
-};
+	id: number
+	name: string
+}
 export type PostType = {
-	id: number;
-	message: string;
-	likesCount: number;
-};
+	id: number
+	message: string
+	likesCount: number
+}
 export type DialogsPageType = {
-	dialogs: Array<DialogType>;
-	messages: Array<MessageType>;
-    newMessageText: string
-};
+	dialogs: Array<DialogType>
+	messages: Array<MessageType>
+	newMessageText: string
+}
 export type ProfilePageType = {
-	posts: Array<PostType>;
-};
+	posts: Array<PostType>
+	newPostText: string
+}
 export type SidebarType = {}
 export type StateType = {
-	profilePage: ProfilePageType;
-	dialogsPage: DialogsPageType;
-    sidebar: SidebarType;
-};
+	profilePage: ProfilePageType
+	dialogsPage: DialogsPageType
+	sidebar: SidebarType
+}
 export type StoreType = {
-	_state: StateType;
-	_onChange: () => void;
-	render: (callBack: () => void) => void;
-	getState: () => StateType;
-    dispatch: (action: AllActionsType) => void
-};
+	_state: StateType
+	_onChange: () => void
+	render: (callBack: () => void) => void
+	getState: () => StateType
+	dispatch: (action: AllActionsType) => void
+}
 
 //=======================Actions Types============================
 
-export type AllActionsType = 
-    AddPostACType
-    | ChangeMessageTextACType
-    | SendMessageACType;
-
+export type AllActionsType = AddPostACType | ChangeMessageTextACType | SendMessageACType | ChangeNewPostTextACType
 
 export const store: StoreType = {
 	_state: {
@@ -56,6 +51,7 @@ export const store: StoreType = {
 				{ id: 3, message: 'Hi, how are you?', likesCount: 16 },
 				{ id: 4, message: "Hey, it's my first app! ", likesCount: 32 },
 			],
+			newPostText: '',
 		},
 		dialogsPage: {
 			dialogs: [
@@ -72,25 +68,24 @@ export const store: StoreType = {
 				{ id: 3, message: 'Yo! Wats up? ' },
 				{ id: 4, message: 'Yo' },
 			],
-            newMessageText: ''
+			newMessageText: '',
 		},
-        sidebar: {}
+		sidebar: {},
 	},
 	_onChange() {
-		console.log('state changed');
+		console.log('state changed')
 	},
 	render(callBack: () => void) {
-		this._onChange = callBack;
+		this._onChange = callBack
 	},
 	getState() {
-		return this._state;
+		return this._state
 	},
-    dispatch(action) {
-        dialogsReduser(this._state.dialogsPage, action)
-        profileReduser(this._state.profilePage, action)
-        sidebarReduser(this._state.sidebar, action)
+	dispatch(action) {
+		dialogsReduser(this._state.dialogsPage, action)
+		profileReduser(this._state.profilePage, action)
+		sidebarReduser(this._state.sidebar, action)
 
-        this._onChange()
-    }
-};
-
+		this._onChange()
+	},
+}

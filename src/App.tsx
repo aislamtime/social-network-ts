@@ -1,23 +1,17 @@
-import React from 'react';
-import './App.css';
-import { Header } from './components/Header/Header';
-import { Sidebar } from './components/Sidebar/Sidebar';
-import { Content } from './components/Content/Content';
-import { AllActionsType, StateType } from './redux/store';
+import React from 'react'
+import './App.css'
+import { Header } from './components/Header/Header'
+import { Sidebar } from './components/Sidebar/Sidebar'
+import { Content } from './components/Content/Content'
 
-type AppProps = {
-    state: StateType;
-    dispatch: (action: AllActionsType) => void;
-};
-
-function App(props: AppProps) {
-    return (
-        <div className='app-wrapper'>
-            <Header />
-            <Sidebar />
-            <Content state={props.state} dispatch={props.dispatch} />
-        </div>
-    );
+function App() {
+	return (
+		<div className='app-wrapper'>
+			<Header />
+			<Sidebar />
+			<Content />
+		</div>
+	)
 }
 
-export default App;
+export default App
