@@ -7,6 +7,7 @@ import { Music } from '../Music/Music'
 import { Settings } from '../Settings/Settings'
 import { DialogsContainer } from '../Dialogs/DialogsContainer'
 import { Users } from '../Users/Users'
+import { UsersConstainer } from '../Users/UsersContainer'
 
 export function Content() {
 	return (
@@ -17,7 +18,7 @@ export function Content() {
 				<Route path='/news' element={<News />} />
 				<Route path='/music' element={<Music />} />
 				<Route path='/settings' element={<Settings />} />
-				<Route path='/users' element={<Users />} />
+				<Route path='/users' element={<UsersConstainer />} />
 			</Routes>
 		</div>
 	)
