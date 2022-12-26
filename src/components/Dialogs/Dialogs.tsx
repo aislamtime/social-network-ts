@@ -24,7 +24,7 @@ export function Dialogs(props: DialogsPropsType) {
 						value={props.dialogsPage.newMessageText}
 						onChange={(e) => props.changeInputValue(e.currentTarget.value)}
 					/>
-					<button className={s.addMessageButton} onClick={() => props.sendMessage}>
+					<button className={s.addMessageButton} onClick={() => props.sendMessage()}>
 						Send
 					</button>
 				</div>

@@ -21,9 +21,8 @@ const profileReduser = (state: ProfilePageType = initialState, action: AllAction
 				message: state.newPostText,
 				likesCount: 0,
 			}
-			const newPosts = [...state.posts, newPost]
 			return {
-				posts: newPosts,
+				posts: [...state.posts, newPost],
 				newPostText: '',
 			}
 		}

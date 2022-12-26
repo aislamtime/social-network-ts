@@ -5,7 +5,7 @@ import { Dialogs } from './Dialogs'
 
 const mapStateToProps = (state: StateType) => ({ dialogsPage: state.dialogsPage })
 const mapDispatchToProps = (dispatch: any) => ({
-	inputValueChange: (newValue: string) => dispatch(changeMessageTextAC(newValue)),
+	changeInputValue: (newValue: string) => dispatch(changeMessageTextAC(newValue)),
 	sendMessage: () => dispatch(sendMessageAC()),
 })
 
