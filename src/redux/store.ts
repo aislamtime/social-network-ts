@@ -1,6 +1,7 @@
 import dialogsReduser, { ChangeMessageTextACType, SendMessageACType } from './reducers/dialogs-reduser'
 import profileReduser, { AddPostACType, ChangeNewPostTextACType } from './reducers/profile-reduser'
 import sidebarReduser from './reducers/sidebar-reduser'
+import { FollowACType, UnFollowACType } from './reducers/users-reduser'
 
 export type MessageType = {
 	id: number
@@ -40,7 +41,13 @@ export type StoreType = {
 
 //=======================Actions Types============================
 
-export type AllActionsType = AddPostACType | ChangeMessageTextACType | SendMessageACType | ChangeNewPostTextACType
+export type AllActionsType =
+	| AddPostACType
+	| ChangeMessageTextACType
+	| SendMessageACType
+	| ChangeNewPostTextACType
+	| FollowACType
+	| UnFollowACType
 
 export const store: StoreType = {
 	_state: {
