@@ -11,6 +11,7 @@ type LocationType = {
 export type UserType = {
 	id: string
 	followed: boolean
+	photoUrl: string
 	firstName: string
 	secondName: string
 	status: string
@@ -21,32 +22,7 @@ export type UsersType = {
 }
 
 const initialState: UsersType = {
-	users: [
-		//{
-		//	id: '1',
-		//	followed: false,
-		//	firstName: 'Alex',
-		//	secondName: 'Snow',
-		//	status: 'I am a boss',
-		//	location: { city: 'New York', country: 'USA' },
-		//},
-		//{
-		//	id: '2',
-		//	followed: true,
-		//	firstName: 'John',
-		//	secondName: 'Pitt',
-		//	status: 'I am a boss too?',
-		//	location: { city: 'Paris', country: 'France' },
-		//},
-		//{
-		//	id: '2',
-		//	followed: false,
-		//	firstName: 'Nik',
-		//	secondName: 'Colson',
-		//	status: 'I am a boss too ahahaha',
-		//	location: { city: 'Miami', country: 'USA' },
-		//},
-	],
+	users: [],
 }
 
 export const usersReduser = (state: UsersType = initialState, action: AllActionsType): UsersType => {
@@ -69,7 +45,6 @@ export const usersReduser = (state: UsersType = initialState, action: AllActions
 			}
 		case SET_USERS:
 			return {
-				...state,
 				users: [...state.users, ...action.users],
 			}
 		default:

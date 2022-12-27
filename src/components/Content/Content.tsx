@@ -6,7 +6,6 @@ import { News } from '../News/News'
 import { Music } from '../Music/Music'
 import { Settings } from '../Settings/Settings'
 import { DialogsContainer } from '../Dialogs/DialogsContainer'
-import { Users } from '../Users/Users'
 import { UsersConstainer } from '../Users/UsersContainer'
 
 export function Content() {

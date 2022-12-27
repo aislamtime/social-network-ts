@@ -1,7 +1,7 @@
 import dialogsReduser, { ChangeMessageTextACType, SendMessageACType } from './reducers/dialogs-reduser'
 import profileReduser, { AddPostACType, ChangeNewPostTextACType } from './reducers/profile-reduser'
 import sidebarReduser from './reducers/sidebar-reduser'
-import { FollowACType, SetUsersACType, unfollowACType } from './reducers/users-reduser'
+import { FollowACType, SetUsersACType, unfollowACType, UsersType } from './reducers/users-reduser'
 
 export type MessageType = {
 	id: number
@@ -30,6 +30,7 @@ export type StateType = {
 	profilePage: ProfilePageType
 	dialogsPage: DialogsPageType
 	sidebar: SidebarType
+	usersPage: UsersType
 }
 export type StoreType = {
 	_state: StateType
@@ -79,6 +80,9 @@ export const store: StoreType = {
 			newMessageText: '',
 		},
 		sidebar: {},
+		usersPage: {
+			users: [],
+		},
 	},
 	_onChange() {
 		console.log('state changed')
