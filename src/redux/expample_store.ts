@@ -1,7 +1,7 @@
 import dialogsReduser, { ChangeMessageTextACType, SendMessageACType } from './reducers/dialogs-reduser'
 import profileReduser, { AddPostACType, ChangeNewPostTextACType } from './reducers/profile-reduser'
 import sidebarReduser from './reducers/sidebar-reduser'
-import { FollowACType, SetUsersACType, unfollowACType, UsersType } from './reducers/users-reduser'
+import { FollowACType, SetUsersACType, unfollowACType, UsersType } from './reducers/users-reduser2'
 
 export type MessageType = {
 	id: number

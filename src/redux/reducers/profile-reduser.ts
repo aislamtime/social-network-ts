@@ -21,7 +21,7 @@ const initialState: ProfilePageType = {
 	newPostText: '',
 }
 
-const profileReduser = (state: ProfilePageType = initialState, action: ProfileActionsType) => {
+const profileReduser = (state: ProfilePageType = initialState, action: ProfileActionsType): ProfilePageType => {
 	switch (action.type) {
 		case ADD_POST: {
 			const newPost = {
@@ -41,7 +41,7 @@ const profileReduser = (state: ProfilePageType = initialState, action: ProfileAc
 			}
 		}
 		default:
-			return state
+			throw new Error('BAD ACTION TYPE')
 	}
 }
 

@@ -1,22 +1,15 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit'
+import { configureStore } from '@reduxjs/toolkit'
 import dialogsReduser from './reducers/dialogs-reduser'
 import profileReduser from './reducers/profile-reduser'
 import sidebarReduser from './reducers/sidebar-reduser'
-import usersReduser from './reducers/users-reduser'
-
-//const reduser = combineReducers({
-//	profilePage: profileReduser,
-//	dialogsPage: dialogsReduser,
-//	sidebar: sidebarReduser,
-//	usersPage: usersReduser,
-//})
+import usersReduser from './reducers/user-reduser'
 
 export const store = configureStore({
 	reducer: {
 		profilePage: profileReduser,
 		dialogsPage: dialogsReduser,
 		sidebar: sidebarReduser,
-		usersPage: usersReduser,
+		userPage: usersReduser,
 	},
 })
 
