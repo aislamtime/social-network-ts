@@ -1,10 +1,10 @@
-import { AllActionsType, ProfilePageType } from '../store'
+import { Reducer } from '@reduxjs/toolkit'
 
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET-USERS'
 
-type LocationType = {
+type UserLocationType = {
 	city: string
 	country: string
 }
@@ -15,17 +15,20 @@ export type UserType = {
 	firstName: string
 	secondName: string
 	status: string
-	location: LocationType
+	location: UserLocationType
 }
-export type UsersType = {
+export type UsersPageType = {
 	users: Array<UserType>
 }
 
-const initialState: UsersType = {
+const initialState: UsersPageType = {
 	users: [],
 }
 
-export const usersReduser = (state: UsersType = initialState, action: AllActionsType): UsersType => {
+const usersReduser: Reducer<UsersPageType, UsersActionsType> = (
+	state: UsersPageType = initialState,
+	action: UsersActionsType,
+): UsersPageType => {
 	switch (action.type) {
 		case FOLLOW:
 			return {
@@ -52,6 +55,8 @@ export const usersReduser = (state: UsersType = initialState, action: AllActions
 	}
 }
 
+export type UsersActionsType = FollowACType | unfollowACType | SetUsersACType
+
 export type FollowACType = ReturnType<typeof followAC>
 export const followAC = (userId: string) => {
 	return {
@@ -75,3 +80,5 @@ export const setUsersAC = (users: Array<UserType>) => {
 		users: users,
 	} as const
 }
+
+export default usersReduser

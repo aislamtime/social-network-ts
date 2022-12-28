@@ -26,13 +26,13 @@ export type ProfilePageType = {
 	newPostText: string
 }
 export type SidebarType = {}
-export type StateType = {
+type StateType = {
 	profilePage: ProfilePageType
 	dialogsPage: DialogsPageType
 	sidebar: SidebarType
 	usersPage: UsersType
 }
-export type StoreType = {
+type StoreType = {
 	_state: StateType
 	_onChange: () => void
 	render: (callBack: () => void) => void
@@ -42,7 +42,7 @@ export type StoreType = {
 
 //=======================Actions Types============================
 
-export type AllActionsType =
+type AllActionsType =
 	| AddPostACType
 	| ChangeMessageTextACType
 	| SendMessageACType

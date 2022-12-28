@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { addPostAC, changeNewPostTextAC } from '../../../redux/reducers/profile-reduser'
-import { StateType } from '../../../redux/store'
+import { StateType } from '../../../redux/expample_store'
 import { MyPosts } from './MyPosts'
 
 const mapStateToProps = (state: StateType) => ({

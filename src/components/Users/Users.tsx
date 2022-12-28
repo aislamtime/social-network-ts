@@ -1,13 +1,6 @@
 import React from 'react'
-import { UserType } from '../../redux/reducers/users-reduser'
 import s from './Users.module.css'
-
-type UsersPropsType = {
-	users: Array<UserType>
-	follow: (userId: string) => void
-	unfollow: (userId: string) => void
-	setUsers: (users: Array<UserType>) => void
-}
+import { UsersPropsType } from './UsersContainer'
 
 export function Users(props: UsersPropsType) {
 	let p = 0

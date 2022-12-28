@@ -1,9 +1,11 @@
-import { AllActionsType, SidebarType } from "../store";
+import { SidebarType } from '../expample_store'
 
 const initialState = {}
 
-const sedebarReduser = (state: SidebarType = initialState, action: AllActionsType) => {
-    return state;
+const sedebarReduser = (state: SidebarType = initialState, action: SidebarActionsType) => {
+	return state
 }
 
-export default sedebarReduser;
+type SidebarActionsType = any
+
+export default sedebarReduser

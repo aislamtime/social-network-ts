@@ -1,14 +1,8 @@
-import React, { ChangeEvent } from 'react'
+import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { changeMessageTextAC, sendMessageAC } from '../../redux/reducers/dialogs-reduser'
-import { AllActionsType, DialogsPageType, DialogType, MessageType } from '../../redux/store'
+import { DialogType, MessageType } from '../../redux/reducers/dialogs-reduser'
 import s from './Dialogs.module.css'
-
-type DialogsPropsType = {
-	dialogsPage: DialogsPageType
-	changeInputValue: (newValue: string) => void
-	sendMessage: () => void
-}
+import { DialogsPropsType } from './DialogsContainer'
 
 export function Dialogs(props: DialogsPropsType) {
 	const dialogsElements = props.dialogsPage.dialogs.map((el) => <DialogsItem name={el.name} id={el.id} />)
