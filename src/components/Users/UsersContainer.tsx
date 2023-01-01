@@ -1,6 +1,6 @@
 import { Dispatch } from '@reduxjs/toolkit'
 import { connect } from 'react-redux'
-import { followAC, setUsersAC, unfollowAC, UserType } from '../../redux/reducers/users-reduser2'
+import { followAC, setUsersAC, unfollowAC, UserType } from '../../redux/reducers/users-reduser'
 import { RootStateType } from '../../redux/redux-store'
 import { Users } from './Users'
 

@@ -1,6 +1,6 @@
 import React from 'react'
+import { PostType } from '../../../redux/reducers/profile-reduser'
 import s from './MyPosts.module.css'
-import { PostType } from '../../../redux/expample_store'
 import { Post } from './Post/Post'
 
 type MyPostsType = {

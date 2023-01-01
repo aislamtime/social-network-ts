@@ -45,7 +45,7 @@ const profileReduser = (state: ProfilePageType = initialState, action: ProfileAc
 	}
 }
 
-type ProfileActionsType = AddPostACType | ChangeNewPostTextACType
+export type ProfileActionsType = AddPostACType | ChangeNewPostTextACType
 
 type AddPostACType = ReturnType<typeof addPostAC>
 export const addPostAC = () => {

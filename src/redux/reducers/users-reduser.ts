@@ -27,25 +27,25 @@ const initialState: UsersPageType = {
 			photoUrl: 'https://www.meme-arsenal.com/memes/68c2a221bca55e0c5fec6213dc185d0d.jpg',
 			firstName: 'Alex',
 			secondName: 'Snow',
-			status: 'I am a boss',
+			status: 'I am Alex',
 			location: { city: 'New York', country: 'USA' },
 		},
 		{
 			id: '2',
 			followed: true,
 			photoUrl: 'https://www.meme-arsenal.com/memes/68c2a221bca55e0c5fec6213dc185d0d.jpg',
-			firstName: 'John',
-			secondName: 'Pitt',
-			status: 'I am a boss too?',
+			firstName: 'Not Alex',
+			secondName: 'Snow',
+			status: 'I am not Alex',
 			location: { city: 'Paris', country: 'France' },
 		},
 		{
 			id: '3',
 			followed: false,
 			photoUrl: 'https://www.meme-arsenal.com/memes/68c2a221bca55e0c5fec6213dc185d0d.jpg',
-			firstName: 'Nik',
-			secondName: 'Colson',
-			status: 'I am a boss too ahahaha',
+			firstName: 'Not Alex Too',
+			secondName: 'Snow',
+			status: 'I am not Alex too',
 			location: { city: 'Miami', country: 'USA' },
 		},
 	],
@@ -79,7 +79,8 @@ const usersReduser = (state: UsersPageType = initialState, action: UsersActionsT
 	}
 }
 
-type UsersActionsType = FollowACType | unfollowACType | SetUsersACType
+export type UsersActionsType = FollowACType | unfollowACType | SetUsersACType
+
 type FollowACType = ReturnType<typeof followAC>
 export const followAC = (userId: string) => {
 	return {
