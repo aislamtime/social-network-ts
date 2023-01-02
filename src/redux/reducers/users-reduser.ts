@@ -23,26 +23,26 @@ export type UsersPageType = {
 
 const initialState: UsersPageType = {
 	items: [
-		{
-			name: 'Shubert',
-			id: 1,
-			photos: {
-				small: '',
-				large: '',
-			},
-			status: '',
-			followed: false,
-		},
-		{
-			name: 'Hacker',
-			id: 2,
-			photos: {
-				small: '',
-				large: '',
-			},
-			status: '',
-			followed: false,
-		},
+		//{
+		//	name: 'Shubert',
+		//	id: 1,
+		//	photos: {
+		//		small: '',
+		//		large: '',
+		//	},
+		//	status: '',
+		//	followed: false,
+		//},
+		//{
+		//	name: 'Hacker',
+		//	id: 2,
+		//	photos: {
+		//		small: '',
+		//		large: '',
+		//	},
+		//	status: '',
+		//	followed: false,
+		//},
 	],
 	totalCount: 30,
 	error: '',

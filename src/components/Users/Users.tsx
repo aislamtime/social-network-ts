@@ -11,6 +11,31 @@ export function Users(props: UsersPropsType) {
 	//	props.setUsers(response.data.items)
 	//})
 
+	if (props.users.length === 0) {
+		props.setUsers([
+			{
+				name: 'Shubert',
+				id: 1,
+				photos: {
+					small: '',
+					large: '',
+				},
+				status: '',
+				followed: false,
+			},
+			{
+				name: 'Hacker',
+				id: 2,
+				photos: {
+					small: '',
+					large: '',
+				},
+				status: '',
+				followed: false,
+			},
+		])
+	}
+
 	return (
 		<div className={s.main}>
 			{props.users.map((u) => {
