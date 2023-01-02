@@ -8,17 +8,17 @@ type MapStatePropsType = {
 	users: Array<UserType>
 }
 type MapDispatchPropsType = {
-	follow: (userId: string) => void
-	unfollow: (userId: string) => void
+	follow: (userId: number) => void
+	unfollow: (userId: number) => void
 	setUsers: (users: Array<UserType>) => void
 }
 
 export type UsersPropsType = MapStatePropsType & MapDispatchPropsType
 
-const mapStateToProps = (state: RootStateType): MapStatePropsType => ({ users: state.usersPage.users })
+const mapStateToProps = (state: RootStateType): MapStatePropsType => ({ users: state.usersPage.items })
 const mapDispatchToProps = (dispatch: Dispatch): MapDispatchPropsType => ({
-	follow: (userId: string) => dispatch(followAC(userId)),
-	unfollow: (userId: string) => dispatch(unfollowAC(userId)),
+	follow: (userId: number) => dispatch(followAC(userId)),
+	unfollow: (userId: number) => dispatch(unfollowAC(userId)),
 	setUsers: (users: Array<UserType>) => dispatch(setUsersAC(users)),
 })
 

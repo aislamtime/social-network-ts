@@ -4,53 +4,48 @@ const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET-USERS'
 
-export type UserLocationType = {
-	city: string
-	country: string
+type UserPhotosType = {
+	small: string
+	large: string
 }
 export type UserType = {
-	id: string
+	id: number
+	name: string
 	followed: boolean
-	photoUrl: string
-	firstName: string
-	secondName: string
+	photos: UserPhotosType
 	status: string
-	location: UserLocationType
 }
 export type UsersPageType = {
-	users: Array<UserType>
+	items: Array<UserType>
+	totalCount: number
+	error: string
 }
 
 const initialState: UsersPageType = {
-	users: [
+	items: [
 		{
-			id: '1',
+			name: 'Shubert',
+			id: 1,
+			photos: {
+				small: '',
+				large: '',
+			},
+			status: '',
 			followed: false,
-			photoUrl: 'https://www.meme-arsenal.com/memes/68c2a221bca55e0c5fec6213dc185d0d.jpg',
-			firstName: 'Alex',
-			secondName: 'Snow',
-			status: 'I am Alex',
-			location: { city: 'New York', country: 'USA' },
 		},
 		{
-			id: '2',
-			followed: true,
-			photoUrl: 'https://www.meme-arsenal.com/memes/68c2a221bca55e0c5fec6213dc185d0d.jpg',
-			firstName: 'Not Alex',
-			secondName: 'Snow',
-			status: 'I am not Alex',
-			location: { city: 'Paris', country: 'France' },
-		},
-		{
-			id: '3',
+			name: 'Hacker',
+			id: 2,
+			photos: {
+				small: '',
+				large: '',
+			},
+			status: '',
 			followed: false,
-			photoUrl: 'https://www.meme-arsenal.com/memes/68c2a221bca55e0c5fec6213dc185d0d.jpg',
-			firstName: 'Not Alex Too',
-			secondName: 'Snow',
-			status: 'I am not Alex too',
-			location: { city: 'Miami', country: 'USA' },
 		},
 	],
+	totalCount: 30,
+	error: '',
 }
 
 const usersReduser = (state: UsersPageType = initialState, action: AnyAction): UsersPageType => {
@@ -58,7 +53,7 @@ const usersReduser = (state: UsersPageType = initialState, action: AnyAction): U
 		case FOLLOW:
 			return {
 				...state,
-				users: state.users.map((u) => {
+				items: state.items.map((u) => {
 					if (u.id === action.userId) return { ...u, followed: true }
 					else return u
 				}),
@@ -66,7 +61,7 @@ const usersReduser = (state: UsersPageType = initialState, action: AnyAction): U
 		case UNFOLLOW:
 			return {
 				...state,
-				users: state.users.map((u) => {
+				items: state.items.map((u) => {
 					if (u.id === action.userId) return { ...u, followed: false }
 					else return u
 				}),
@@ -74,7 +69,7 @@ const usersReduser = (state: UsersPageType = initialState, action: AnyAction): U
 		case SET_USERS:
 			return {
 				...state,
-				users: [...state.users, ...action.users],
+				items: [...state.items, ...action.items],
 			}
 		default:
 			return state
@@ -85,7 +80,7 @@ const usersReduser = (state: UsersPageType = initialState, action: AnyAction): U
 export type UsersActionsType = FollowACType | unfollowACType | SetUsersACType
 
 type FollowACType = ReturnType<typeof followAC>
-export const followAC = (userId: string) => {
+export const followAC = (userId: number) => {
 	return {
 		type: FOLLOW,
 		userId: userId,
@@ -93,7 +88,7 @@ export const followAC = (userId: string) => {
 }
 
 type unfollowACType = ReturnType<typeof unfollowAC>
-export const unfollowAC = (userId: string) => {
+export const unfollowAC = (userId: number) => {
 	return {
 		type: UNFOLLOW,
 		userId: userId,
@@ -101,10 +96,10 @@ export const unfollowAC = (userId: string) => {
 }
 
 type SetUsersACType = ReturnType<typeof setUsersAC>
-export const setUsersAC = (users: Array<UserType>) => {
+export const setUsersAC = (items: Array<UserType>) => {
 	return {
 		type: SET_USERS,
-		users: users,
+		items,
 	} as const
 }
 
