@@ -1,3 +1,5 @@
+import { AnyAction } from '@reduxjs/toolkit'
+
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET-USERS'
@@ -51,7 +53,7 @@ const initialState: UsersPageType = {
 	],
 }
 
-const usersReduser = (state: UsersPageType = initialState, action: UsersActionsType): UsersPageType => {
+const usersReduser = (state: UsersPageType = initialState, action: AnyAction): UsersPageType => {
 	switch (action.type) {
 		case FOLLOW:
 			return {
@@ -75,7 +77,8 @@ const usersReduser = (state: UsersPageType = initialState, action: UsersActionsT
 				users: [...state.users, ...action.users],
 			}
 		default:
-			throw new Error('BAD ACTION TYPE')
+			return state
+		//throw new Error('BAD ACTION TYPE')
 	}
 }
 

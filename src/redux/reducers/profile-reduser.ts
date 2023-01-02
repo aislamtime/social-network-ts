@@ -41,7 +41,8 @@ const profileReduser = (state: ProfilePageType = initialState, action: ProfileAc
 			}
 		}
 		default:
-			throw new Error('BAD ACTION TYPE')
+			return state
+		//throw new Error('BAD ACTION TYPE')
 	}
 }
 
