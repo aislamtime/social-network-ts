@@ -65,3 +65,15 @@
 .city,
 .country {
 }
+
+/*-------------------------------------------------*/
+
+.selected {
+	font-weight: bold;
+}
+.changePage {
+	display: inline-block;
+	padding: 3px;
+	margin-right: 3px;
+	cursor: pointer;
+}

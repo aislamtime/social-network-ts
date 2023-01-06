@@ -1,7 +1,10 @@
 .header {
+	position: sticky;
+	top: 0;
 	grid-area: header;
 	background-color: rgb(65, 155, 65);
 	padding: 5px;
+	z-index: 99;
 }
 .logo {
 	max-width: 40px;

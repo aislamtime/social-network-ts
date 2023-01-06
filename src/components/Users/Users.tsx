@@ -4,41 +4,41 @@ import s from './Users.module.css'
 import { UsersPropsType } from './UsersContainer'
 import userPhoto from './../../assets/images/user.png'
 
-export function Users(props: UsersPropsType) {
+export function Usersm(props: UsersPropsType) {
 	//! console.log('Users rendering')
 
 	//axios.get('https://social-network.samuraijs.com/api/1.0/users').then((response) => {
 	//	props.setUsers(response.data.items)
 	//})
 
-	if (props.users.length === 0) {
-		props.setUsers([
-			{
-				name: 'Shubert',
-				id: 1,
-				photos: {
-					small: '',
-					large: '',
-				},
-				status: '',
-				followed: false,
-			},
-			{
-				name: 'Hacker',
-				id: 2,
-				photos: {
-					small: '',
-					large: '',
-				},
-				status: '',
-				followed: false,
-			},
-		])
-	}
+	//if (props.items.length === 0) {
+	//	props.setUsers([
+	//		{
+	//			name: 'Shubert',
+	//			id: 1,
+	//			photos: {
+	//				small: '',
+	//				large: '',
+	//			},
+	//			status: '',
+	//			followed: false,
+	//		},
+	//		{
+	//			name: 'Hacker',
+	//			id: 2,
+	//			photos: {
+	//				small: '',
+	//				large: '',
+	//			},
+	//			status: '',
+	//			followed: false,
+	//		},
+	//	])
+	//}
 
 	return (
 		<div className={s.main}>
-			{props.users.map((u) => {
+			{props.items.map((u) => {
 				return (
 					<div key={u.id} className={s.user}>
 						<div className={s.ava_and_btn}>

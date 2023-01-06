@@ -3,6 +3,8 @@ import { AnyAction } from '@reduxjs/toolkit'
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET-USERS'
+const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE'
+const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT'
 
 type UserPhotosType = {
 	small: string
@@ -19,6 +21,8 @@ export type UsersPageType = {
 	items: Array<UserType>
 	totalCount: number
 	error: string
+	page: number
+	currentPage: number
 }
 
 const initialState: UsersPageType = {
@@ -44,8 +48,10 @@ const initialState: UsersPageType = {
 		//	followed: false,
 		//},
 	],
-	totalCount: 30,
+	totalCount: 0,
 	error: '',
+	page: 100,
+	currentPage: 1,
 }
 
 const usersReduser = (state: UsersPageType = initialState, action: AnyAction): UsersPageType => {
@@ -69,15 +75,31 @@ const usersReduser = (state: UsersPageType = initialState, action: AnyAction): U
 		case SET_USERS:
 			return {
 				...state,
-				items: [...state.items, ...action.items],
+				items: [...action.items],
 			}
+		case SET_CURRENT_PAGE: {
+			return {
+				...state,
+				currentPage: action.currentPage,
+			}
+		}
+		case SET_TOTAL_USERS_COUNT: {
+			return {
+				...state,
+				totalCount: action.totalCount,
+			}
+		}
 		default:
 			return state
-		//throw new Error('BAD ACTION TYPE')
 	}
 }
 
-export type UsersActionsType = FollowACType | unfollowACType | SetUsersACType
+export type UsersActionsType =
+	| FollowACType
+	| unfollowACType
+	| SetUsersACType
+	| SetCurrentPageACType
+	| SetTotalUsersCountACType
 
 type FollowACType = ReturnType<typeof followAC>
 export const followAC = (userId: number) => {
@@ -101,6 +123,22 @@ export const setUsersAC = (items: Array<UserType>) => {
 		type: SET_USERS,
 		items,
 	} as const
+}
+
+type SetCurrentPageACType = ReturnType<typeof setCurrentPageAC>
+export const setCurrentPageAC = (currentPage: number) => {
+	return {
+		type: SET_CURRENT_PAGE,
+		currentPage,
+	}
+}
+
+type SetTotalUsersCountACType = ReturnType<typeof SetTotalUsersCountAC>
+export const SetTotalUsersCountAC = (totalCount: number) => {
+	return {
+		type: SET_TOTAL_USERS_COUNT,
+		totalCount,
+	}
 }
 
 export default usersReduser
