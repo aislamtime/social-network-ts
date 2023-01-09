@@ -5,8 +5,8 @@ import { Profile } from '../Profile/Profile'
 import { News } from '../News/News'
 import { Music } from '../Music/Music'
 import { Settings } from '../Settings/Settings'
-import { DialogsContainer } from '../Dialogs/DialogsContainer'
-import { UsersConstainer } from '../Users/UsersContainer'
+import DialogsContainer from '../Dialogs/DialogsContainer'
+import UsersConstainer from '../Users/UsersContainer'
 
 export function Content() {
 	return (

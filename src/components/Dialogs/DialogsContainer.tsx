@@ -20,4 +20,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 	sendMessage: () => dispatch(sendMessageAC()),
 })
 
-export const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs)
+export default connect(mapStateToProps, mapDispatchToProps)(Dialogs)

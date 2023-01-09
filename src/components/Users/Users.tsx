@@ -1,43 +1,44 @@
 import axios from 'axios'
 import React from 'react'
 import s from './Users.module.css'
-import { UsersPropsType } from './UsersContainer'
+//import { UsersPropsType } from './UsersContainer'
 import userPhoto from './../../assets/images/user.png'
+import { UserType } from '../../redux/reducers/users-reduser'
 
-export function Usersm(props: UsersPropsType) {
-	//! console.log('Users rendering')
+export type UsersPropsType = {
+	onPageNumberChange: (page: number) => void
+	unfollow: (userId: number) => void
+	follow: (userId: number) => void
+	items: Array<UserType>
+	totalCount: number
+	page: number
+	currentPage: number
+}
 
-	//axios.get('https://social-network.samuraijs.com/api/1.0/users').then((response) => {
-	//	props.setUsers(response.data.items)
-	//})
-
-	//if (props.items.length === 0) {
-	//	props.setUsers([
-	//		{
-	//			name: 'Shubert',
-	//			id: 1,
-	//			photos: {
-	//				small: '',
-	//				large: '',
-	//			},
-	//			status: '',
-	//			followed: false,
-	//		},
-	//		{
-	//			name: 'Hacker',
-	//			id: 2,
-	//			photos: {
-	//				small: '',
-	//				large: '',
-	//			},
-	//			status: '',
-	//			followed: false,
-	//		},
-	//	])
-	//}
+export function Users(props: UsersPropsType) {
+	let pagesCount = Math.ceil(props.totalCount / props.page)
+	const pages = []
+	for (let i = 1; i <= pagesCount; i++) {
+		pages.push(i)
+	}
+	console.log(pages)
 
 	return (
 		<div className={s.main}>
+			<div>
+				{pages.map((p) => {
+					return (
+						<span
+							className={`${props.currentPage === p ? s.selected : ''} ${s.changePage}`}
+							onClick={() => {
+								props.onPageNumberChange(p)
+							}}
+						>
+							{p}
+						</span>
+					)
+				})}
+			</div>
 			{props.items.map((u) => {
 				return (
 					<div key={u.id} className={s.user}>

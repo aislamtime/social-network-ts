@@ -1,4 +1,6 @@
 import { Dispatch } from '@reduxjs/toolkit'
+import axios from 'axios'
+import React from 'react'
 import { connect } from 'react-redux'
 import {
 	followAC,
@@ -9,7 +11,44 @@ import {
 	SetTotalUsersCountAC,
 } from '../../redux/reducers/users-reduser'
 import { RootStateType } from '../../redux/redux-store'
-import { UsersC } from './UsersC'
+import { Users } from './Users'
+
+class UsersContainer extends React.Component<UsersPropsType, UserType[]> {
+	componentDidMount(): void {
+		if (this.props.items.length === 0) {
+			axios
+				.get(
+					`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.page}`,
+				)
+				.then((response) => {
+					this.props.setUsers(response.data.items)
+					this.props.setTotalUsersCount(response.data.totalCount)
+				})
+		}
+	}
+	onPageNumberChange = (currentPage: number) => {
+		this.props.setCurrentPage(currentPage)
+		axios
+			.get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${this.props.page}`)
+			.then((response) => {
+				this.props.setUsers(response.data.items)
+			})
+	}
+
+	render() {
+		return (
+			<Users
+				onPageNumberChange={this.onPageNumberChange}
+				unfollow={this.props.unfollow}
+				follow={this.props.follow}
+				items={this.props.items}
+				totalCount={this.props.totalCount}
+				page={this.props.page}
+				currentPage={this.props.currentPage}
+			/>
+		)
+	}
+}
 
 type MapStatePropsType = {
 	items: Array<UserType>
@@ -28,8 +67,6 @@ type MapDispatchPropsType = {
 export type UsersPropsType = MapStatePropsType & MapDispatchPropsType
 
 const mapStateToProps = (state: RootStateType): MapStatePropsType => {
-	//console.log(state.usersPage.items)
-
 	return {
 		items: state.usersPage.items,
 		totalCount: state.usersPage.totalCount,
@@ -45,4 +82,4 @@ const mapDispatchToProps = (dispatch: Dispatch): MapDispatchPropsType => ({
 	setTotalUsersCount: (totalCount: number) => dispatch(SetTotalUsersCountAC(totalCount)),
 })
 
-export const UsersConstainer = connect(mapStateToProps, mapDispatchToProps)(UsersC)
+export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer)
