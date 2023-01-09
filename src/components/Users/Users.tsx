@@ -11,12 +11,12 @@ export type UsersPropsType = {
 	follow: (userId: number) => void
 	items: Array<UserType>
 	totalCount: number
-	page: number
+	pageSize: number
 	currentPage: number
 }
 
 export function Users(props: UsersPropsType) {
-	let pagesCount = Math.ceil(props.totalCount / props.page)
+	let pagesCount = Math.ceil(props.totalCount / props.pageSize)
 	const pages = []
 	for (let i = 1; i <= pagesCount; i++) {
 		pages.push(i)

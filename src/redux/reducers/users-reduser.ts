@@ -5,6 +5,7 @@ const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET-USERS'
 const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE'
 const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT'
+const SET_IS_FETCHING = 'SET-IS-FETCHING'
 
 type UserPhotosType = {
 	small: string
@@ -21,37 +22,18 @@ export type UsersPageType = {
 	items: Array<UserType>
 	totalCount: number
 	error: string
-	page: number
+	pageSize: number
 	currentPage: number
+	isFetching: boolean
 }
 
 const initialState: UsersPageType = {
-	items: [
-		//{
-		//	name: 'Shubert',
-		//	id: 1,
-		//	photos: {
-		//		small: '',
-		//		large: '',
-		//	},
-		//	status: '',
-		//	followed: false,
-		//},
-		//{
-		//	name: 'Hacker',
-		//	id: 2,
-		//	photos: {
-		//		small: '',
-		//		large: '',
-		//	},
-		//	status: '',
-		//	followed: false,
-		//},
-	],
+	items: [],
 	totalCount: 0,
 	error: '',
-	page: 100,
+	pageSize: 100,
 	currentPage: 1,
+	isFetching: false,
 }
 
 const usersReduser = (state: UsersPageType = initialState, action: AnyAction): UsersPageType => {
@@ -89,6 +71,12 @@ const usersReduser = (state: UsersPageType = initialState, action: AnyAction): U
 				totalCount: action.totalCount,
 			}
 		}
+		case SET_IS_FETCHING: {
+			return {
+				...state,
+				isFetching: action.isFetching,
+			}
+		}
 		default:
 			return state
 	}
@@ -100,6 +88,7 @@ export type UsersActionsType =
 	| SetUsersACType
 	| SetCurrentPageACType
 	| SetTotalUsersCountACType
+	| SetIsFetchingACType
 
 type FollowACType = ReturnType<typeof followAC>
 export const followAC = (userId: number) => {
@@ -133,12 +122,20 @@ export const setCurrentPageAC = (currentPage: number) => {
 	}
 }
 
-type SetTotalUsersCountACType = ReturnType<typeof SetTotalUsersCountAC>
-export const SetTotalUsersCountAC = (totalCount: number) => {
+type SetTotalUsersCountACType = ReturnType<typeof setTotalUsersCountAC>
+export const setTotalUsersCountAC = (totalCount: number) => {
 	return {
 		type: SET_TOTAL_USERS_COUNT,
 		totalCount,
 	}
+}
+
+type SetIsFetchingACType = ReturnType<typeof setIsFetchingAC>
+export const setIsFetchingAC = (isFetching: boolean) => {
+	return {
+		type: SET_IS_FETCHING,
+		isFetching,
+	} as const
 }
 
 export default usersReduser
