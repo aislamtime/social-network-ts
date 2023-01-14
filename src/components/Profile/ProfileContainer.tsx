@@ -5,12 +5,15 @@ import { connect } from 'react-redux'
 import { ProfileType, setUserProfileAC } from '../../redux/reducers/profile-reduser'
 import { RootStateType } from '../../redux/redux-store'
 import { Profile } from './Profile'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 
 class ProfileContainer extends React.Component<ProfilePropsType, ProfileType> {
 	componentDidMount(): void {
-		axios.get('https://social-network.samuraijs.com/api/1.0/profile/2').then((response) => {
-			this.props.setUserProfile(response.data)
-		})
+		axios
+			.get(`https://social-network.samuraijs.com/api/1.0/profile/${this.props.router.params.userId}`)
+			.then((response) => {
+				this.props.setUserProfile(response.data)
+			})
 	}
 
 	render() {
@@ -18,7 +21,7 @@ class ProfileContainer extends React.Component<ProfilePropsType, ProfileType> {
 	}
 }
 
-export type ProfilePropsType = ReturnType<typeof mstp> & ReturnType<typeof mdtp>
+export type ProfilePropsType = (ReturnType<typeof mstp> & ReturnType<typeof mdtp>) | any //! fix
 
 const mstp = (state: RootStateType) => {
 	return {
@@ -30,4 +33,17 @@ const mdtp = (dispatch: Dispatch) => {
 		setUserProfile: (profile: ProfileType) => dispatch(setUserProfileAC(profile)),
 	} as const
 }
-export default connect(mstp, mdtp)(ProfileContainer)
+
+function withRouter(Component: any) {
+	//! fix type
+	function ComponentWithRouterProp(props: ProfilePropsType) {
+		let location = useLocation()
+		let navigate = useNavigate()
+		let params = useParams()
+		return <Component {...props} router={{ location, navigate, params }} />
+	}
+
+	return ComponentWithRouterProp
+}
+
+export default connect(mstp, mdtp)(withRouter(ProfileContainer))

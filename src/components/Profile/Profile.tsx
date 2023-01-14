@@ -23,7 +23,7 @@ export function Profile(props: { profile: ProfileType }) {
 							<span>Work:</span> {props.profile.lookingForAJob ? 'В поиске' : 'Работаю'}
 						</div>
 						<div className={s.workStatus}>
-							<span>Status:</span> {props.profile.lookingForAJobDescription}
+							<span>Skills:</span> {props.profile.lookingForAJobDescription}
 						</div>
 						<div className={s.contacts}>
 							{props.profile.contacts.facebook ? (
