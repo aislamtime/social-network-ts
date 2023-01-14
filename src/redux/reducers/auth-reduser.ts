@@ -21,6 +21,7 @@ const authReduser = (state: AuthUserDataType = initialState, action: AnyAction):
 			return {
 				...state,
 				...action.userData,
+				isAuth: true,
 			}
 		default:
 			return state
@@ -30,10 +31,14 @@ const authReduser = (state: AuthUserDataType = initialState, action: AnyAction):
 export type UsersActionsType = setAuthUserDataACType
 
 type setAuthUserDataACType = ReturnType<typeof setAuthUserDataAC>
-export const setAuthUserDataAC = (userData: AuthUserDataType) => {
+export const setAuthUserDataAC = (userId: number, email: string, login: string) => {
 	return {
 		type: SET_USER_DATA,
-		userData,
+		userData: {
+			userId,
+			email,
+			login,
+		},
 	} as const
 }
 

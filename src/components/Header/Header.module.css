@@ -1,5 +1,8 @@
 .header {
 	position: sticky;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 	top: 0;
 	grid-area: header;
 	background-color: rgb(65, 155, 65);
@@ -11,4 +14,18 @@
 }
 .logo img {
 	width: 100%;
+}
+.auth {
+	margin-right: 15px;
+}
+.auth a {
+	color: white;
+}
+.auth a:hover {
+	text-decoration: underline;
+}
+.auth span {
+	color: White;
+	font-weight: 500;
+	font-size: 16px;
 }
