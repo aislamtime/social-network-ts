@@ -1,20 +1,21 @@
+import { Dispatch } from '@reduxjs/toolkit'
 import { connect } from 'react-redux'
 import { addPostAC, changeNewPostTextAC } from '../../../redux/reducers/profile-reduser'
 import { RootStateType } from '../../../redux/redux-store'
 import { MyPosts } from './MyPosts'
 
-const mapStateToProps = (state: RootStateType) => ({
-	posts: state.profilePage.posts,
-	inputValue: state.profilePage.newPostText,
-})
-const mapDispatchToProps = (dispatch: any) => {
-	return {
-		addPost: () => {
-			dispatch(addPostAC())
-			console.log('add post')
-		},
+export type MyPostsPropsType = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>
+
+const mapStateToProps = (state: RootStateType) =>
+	({
+		posts: state.profilePage.posts,
+		inputValue: state.profilePage.newPostText,
+	} as const)
+
+const mapDispatchToProps = (dispatch: Dispatch) =>
+	({
+		addPost: () => dispatch(addPostAC()),
 		changeNewPostText: (newText: string) => dispatch(changeNewPostTextAC(newText)),
-	}
-}
+	} as const)
 
 export const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts)

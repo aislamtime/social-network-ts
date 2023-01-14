@@ -5,6 +5,7 @@
 	margin-bottom: 10px;
 }
 .info {
+	display: flex;
 	margin-bottom: 25px;
 }
 .avatar {
@@ -48,4 +49,46 @@
 .inputAndButton {
 	display: flex;
 	align-items: end;
+}
+
+.descr {
+	position: relative;
+	width: 100%;
+}
+
+.name {
+	font-weight: 700;
+	font-size: 22px;
+	margin-bottom: 65px;
+}
+.isWork {
+	font-size: 16px;
+	margin-bottom: 5px;
+}
+.isWork span {
+	font-style: italic;
+	font-weight: 700;
+}
+.workStatus {
+	font-style: italic;
+	font-weight: 500;
+	font-size: 18px;
+}
+.contacts {
+	position: absolute;
+	top: 0;
+	right: 15px;
+	display: flex;
+	flex-direction: column;
+	text-align: right;
+}
+.contact {
+	font-style: italic;
+	font-size: 16px;
+	color: blueviolet;
+	margin-bottom: 3px;
+	font-weight: 500;
+}
+.contact:hover {
+	color: #3d5869;
 }

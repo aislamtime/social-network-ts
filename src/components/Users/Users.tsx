@@ -1,9 +1,8 @@
-import axios from 'axios'
 import React from 'react'
 import s from './Users.module.css'
-//import { UsersPropsType } from './UsersContainer'
 import userPhoto from './../../assets/images/user.png'
 import { UserType } from '../../redux/reducers/users-reduser'
+import { NavLink } from 'react-router-dom'
 
 export type UsersPropsType = {
 	onPageNumberChange: (page: number) => void
@@ -21,7 +20,6 @@ export function Users(props: UsersPropsType) {
 	for (let i = 1; i <= pagesCount; i++) {
 		pages.push(i)
 	}
-	console.log(pages)
 
 	return (
 		<div className={s.main}>
@@ -44,7 +42,9 @@ export function Users(props: UsersPropsType) {
 					<div key={u.id} className={s.user}>
 						<div className={s.ava_and_btn}>
 							<div className={s.user_photo}>
-								<img src={u.photos.small ? u.photos.small : userPhoto} alt='photo' />
+								<NavLink to={`/profile/${u.id}`}>
+									<img src={u.photos.small ? u.photos.small : userPhoto} alt='photo' />
+								</NavLink>
 							</div>
 							{u.followed ? (
 								<button className={s.follow_btn} onClick={() => props.unfollow(u.id)}>

@@ -1,17 +1,10 @@
 import React from 'react'
-import { PostType } from '../../../redux/reducers/profile-reduser'
 import s from './MyPosts.module.css'
+import { MyPostsPropsType } from './MyPostsContainer'
 import { Post } from './Post/Post'
 
-type MyPostsType = {
-	posts: Array<PostType>
-	inputValue: string
-	addPost: () => void
-	changeNewPostText: (newPostText: string) => void
-}
-
-export function MyPosts(props: MyPostsType) {
-	const postsElements = props.posts.map((el) => <Post state={el} />)
+export function MyPosts(props: MyPostsPropsType) {
+	const postsElements = props.posts.map((el) => <Post key={el.id} state={el} />)
 	return (
 		<div className={s.myPosts}>
 			<div className={s.myPostsTitle}>My posts</div>

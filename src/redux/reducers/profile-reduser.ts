@@ -1,17 +1,62 @@
 const ADD_POST = 'ADD-POST'
 const CHANGE_NEW_POST_TEXT = 'CHANGE-NEW-POST-TEXT'
+const SET_USER_PROFILE = 'SET-USER-PROFILE'
 
 export type PostType = {
 	id: number
 	message: string
 	likesCount: number
 }
+export type ProfileContactsType = {
+	facebook: string
+	website: string
+	vk: string
+	twitter: string
+	instagram: string
+	youtube: string
+	github: string
+	mainLink: string
+}
+export type ProfileType = {
+	aboutMe: string
+	contacts: ProfileContactsType
+	lookingForAJob: boolean
+	lookingForAJobDescription: string
+	fullName: string
+	userId: number
+	photos: {
+		small: string
+		large: string
+	}
+}
 export type ProfilePageType = {
+	profile: ProfileType
 	posts: Array<PostType>
 	newPostText: string
 }
 
 const initialState: ProfilePageType = {
+	profile: {
+		aboutMe: '',
+		contacts: {
+			facebook: '',
+			website: '',
+			vk: '',
+			twitter: '',
+			instagram: '',
+			youtube: '',
+			github: '',
+			mainLink: '',
+		},
+		lookingForAJob: true,
+		lookingForAJobDescription: '',
+		fullName: '',
+		userId: 0,
+		photos: {
+			small: '',
+			large: '',
+		},
+	},
 	posts: [
 		{ id: 1, message: 'I am from Mars', likesCount: 13 },
 		{ id: 2, message: 'My name is Alesha', likesCount: 18 },
@@ -30,6 +75,7 @@ const profileReduser = (state: ProfilePageType = initialState, action: ProfileAc
 				likesCount: 0,
 			}
 			return {
+				...state,
 				posts: [...state.posts, newPost],
 				newPostText: '',
 			}
@@ -40,13 +86,19 @@ const profileReduser = (state: ProfilePageType = initialState, action: ProfileAc
 				newPostText: action.changePostText,
 			}
 		}
+		case SET_USER_PROFILE: {
+			return {
+				...state,
+				profile: action.profile,
+			}
+		}
 		default:
 			return state
 		//throw new Error('BAD ACTION TYPE')
 	}
 }
 
-export type ProfileActionsType = AddPostACType | ChangeNewPostTextACType
+export type ProfileActionsType = AddPostACType | ChangeNewPostTextACType | SetUserProfileACType
 
 type AddPostACType = ReturnType<typeof addPostAC>
 export const addPostAC = () => {
@@ -59,7 +111,15 @@ type ChangeNewPostTextACType = ReturnType<typeof changeNewPostTextAC>
 export const changeNewPostTextAC = (changePostText: string) => {
 	return {
 		type: CHANGE_NEW_POST_TEXT,
-		changePostText: changePostText,
+		changePostText,
+	} as const
+}
+
+type SetUserProfileACType = ReturnType<typeof setUserProfileAC>
+export const setUserProfileAC = (profile: ProfileType) => {
+	return {
+		type: SET_USER_PROFILE,
+		profile,
 	} as const
 }
 
