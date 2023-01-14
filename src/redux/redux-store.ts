@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
+import authReduser from './reducers/auth-reduser'
 import dialogsReduser from './reducers/dialogs-reduser'
 import profileReduser from './reducers/profile-reduser'
 import sidebarReduser from './reducers/sidebar-reduser'
@@ -10,6 +11,7 @@ export const store = configureStore({
 		dialogsPage: dialogsReduser,
 		sidebar: sidebarReduser,
 		usersPage: usersReduser,
+		auth: authReduser,
 	},
 })
 
