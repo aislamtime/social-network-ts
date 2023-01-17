@@ -10,6 +10,7 @@ import {
 	setCurrentPageAC,
 	setTotalUsersCountAC,
 	setIsFetchingAC,
+	toggleFollowingProgressAC,
 } from '../../redux/reducers/users-reduser'
 import { RootStateType } from '../../redux/redux-store'
 import { Preloader } from '../common/Preloader/Preloader'
@@ -49,6 +50,8 @@ class UsersContainer extends React.Component<UsersPropsType, {}> {
 						totalCount={this.props.totalCount}
 						pageSize={this.props.pageSize}
 						currentPage={this.props.currentPage}
+						followers={this.props.followers}
+						toggleFollowingProgress={this.props.toggleFollowingProgress}
 					/>
 				)}
 			</div>
@@ -65,6 +68,7 @@ const mapStateToProps = (state: RootStateType) => {
 		pageSize: state.usersPage.pageSize,
 		currentPage: state.usersPage.currentPage,
 		isFetching: state.usersPage.isFetching,
+		followers: state.usersPage.followers,
 	} as const
 }
 const mapDispatchToProps = (dispatch: Dispatch) => {
@@ -75,6 +79,8 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
 		setCurrentPage: (currentPage: number) => dispatch(setCurrentPageAC(currentPage)),
 		setTotalUsersCount: (totalCount: number) => dispatch(setTotalUsersCountAC(totalCount)),
 		setIsFetching: (isFetching: boolean) => dispatch(setIsFetchingAC(isFetching)),
+		toggleFollowingProgress: (userId: number, isFetching: boolean) =>
+			dispatch(toggleFollowingProgressAC(userId, isFetching)),
 	} as const
 }
 

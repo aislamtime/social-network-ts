@@ -36,6 +36,12 @@
 .follow_btn:hover {
 	background-color: #444;
 }
+.follow_btn:disabled {
+	background-color: #eee;
+}
+.follow_btn:disabled:hover {
+	background-color: #eee;
+}
 .name {
 	position: absolute;
 	top: 0;

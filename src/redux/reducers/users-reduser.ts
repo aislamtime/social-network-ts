@@ -6,6 +6,7 @@ const SET_USERS = 'SET-USERS'
 const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE'
 const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT'
 const SET_IS_FETCHING = 'SET-IS-FETCHING'
+const TOGGLE_FOLLOEING_IN_PROGRESS = 'FOLLOWING-IN-PROGRESS'
 
 type UserPhotosType = {
 	small: string
@@ -25,6 +26,7 @@ export type UsersPageType = {
 	pageSize: number
 	currentPage: number
 	isFetching: boolean
+	followers: Array<number>
 }
 
 const initialState: UsersPageType = {
@@ -34,6 +36,7 @@ const initialState: UsersPageType = {
 	pageSize: 100,
 	currentPage: 1,
 	isFetching: false,
+	followers: [],
 }
 
 const usersReduser = (state: UsersPageType = initialState, action: AnyAction): UsersPageType => {
@@ -77,6 +80,14 @@ const usersReduser = (state: UsersPageType = initialState, action: AnyAction): U
 				isFetching: action.isFetching,
 			}
 		}
+		case TOGGLE_FOLLOEING_IN_PROGRESS: {
+			return {
+				...state,
+				followers: action.isFetching
+					? [...state.followers, action.userId]
+					: state.followers.filter((id) => id != action.userId),
+			}
+		}
 		default:
 			return state
 	}
@@ -89,6 +100,7 @@ export type UsersActionsType =
 	| SetCurrentPageACType
 	| SetTotalUsersCountACType
 	| SetIsFetchingACType
+	| ToggleFollowingProgressACType
 
 type FollowACType = ReturnType<typeof followAC>
 export const followAC = (userId: number) => {
@@ -136,6 +148,15 @@ export const setIsFetchingAC = (isFetching: boolean) => {
 		type: SET_IS_FETCHING,
 		isFetching,
 	} as const
+}
+
+type ToggleFollowingProgressACType = ReturnType<typeof toggleFollowingProgressAC>
+export const toggleFollowingProgressAC = (userId: number, isFetching: boolean) => {
+	return {
+		type: TOGGLE_FOLLOEING_IN_PROGRESS,
+		userId,
+		isFetching,
+	}
 }
 
 export default usersReduser
