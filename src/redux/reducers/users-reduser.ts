@@ -1,4 +1,6 @@
-import { AnyAction } from '@reduxjs/toolkit'
+import { Action, ActionCreator, AnyAction, Dispatch, ThunkAction } from '@reduxjs/toolkit'
+import { usersAPI } from '../../api/api'
+import { RootStateType } from '../redux-store'
 
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
@@ -93,7 +95,7 @@ const usersReduser = (state: UsersPageType = initialState, action: AnyAction): U
 	}
 }
 
-export type UsersActionsType =
+export type ActionsType =
 	| FollowACType
 	| unfollowACType
 	| SetUsersACType
@@ -102,61 +104,76 @@ export type UsersActionsType =
 	| SetIsFetchingACType
 	| ToggleFollowingProgressACType
 
-type FollowACType = ReturnType<typeof followAC>
-export const followAC = (userId: number) => {
+type FollowACType = ReturnType<typeof follow>
+export const follow = (userId: number) => {
 	return {
 		type: FOLLOW,
 		userId: userId,
 	} as const
 }
 
-type unfollowACType = ReturnType<typeof unfollowAC>
-export const unfollowAC = (userId: number) => {
+type unfollowACType = ReturnType<typeof unfollow>
+export const unfollow = (userId: number) => {
 	return {
 		type: UNFOLLOW,
 		userId: userId,
 	} as const
 }
 
-type SetUsersACType = ReturnType<typeof setUsersAC>
-export const setUsersAC = (items: Array<UserType>) => {
+type SetUsersACType = ReturnType<typeof setUsers>
+export const setUsers = (items: Array<UserType>) => {
 	return {
 		type: SET_USERS,
 		items,
 	} as const
 }
 
-type SetCurrentPageACType = ReturnType<typeof setCurrentPageAC>
-export const setCurrentPageAC = (currentPage: number) => {
+type SetCurrentPageACType = ReturnType<typeof setCurrentPage>
+export const setCurrentPage = (currentPage: number) => {
 	return {
 		type: SET_CURRENT_PAGE,
 		currentPage,
 	}
 }
 
-type SetTotalUsersCountACType = ReturnType<typeof setTotalUsersCountAC>
-export const setTotalUsersCountAC = (totalCount: number) => {
+type SetTotalUsersCountACType = ReturnType<typeof setTotalUsersCount>
+export const setTotalUsersCount = (totalCount: number) => {
 	return {
 		type: SET_TOTAL_USERS_COUNT,
 		totalCount,
 	}
 }
 
-type SetIsFetchingACType = ReturnType<typeof setIsFetchingAC>
-export const setIsFetchingAC = (isFetching: boolean) => {
+type SetIsFetchingACType = ReturnType<typeof setIsFetching>
+export const setIsFetching = (isFetching: boolean) => {
 	return {
 		type: SET_IS_FETCHING,
 		isFetching,
 	} as const
 }
 
-type ToggleFollowingProgressACType = ReturnType<typeof toggleFollowingProgressAC>
-export const toggleFollowingProgressAC = (userId: number, isFetching: boolean) => {
+type ToggleFollowingProgressACType = ReturnType<typeof toggleFollowingProgress>
+export const toggleFollowingProgress = (userId: number, isFetching: boolean) => {
 	return {
 		type: TOGGLE_FOLLOEING_IN_PROGRESS,
 		userId,
 		isFetching,
 	}
 }
+
+//! ------------ THUNKS ------------
+
+export type getUsersThunkType = ThunkAction<void, RootStateType, unknown, ActionsType>
+export const getUsers =
+	(currentPage: number, pageSize: number): getUsersThunkType =>
+	(dispatch) => {
+		dispatch(setIsFetching(true))
+		dispatch(setCurrentPage(currentPage))
+		usersAPI.getUsers(currentPage, pageSize).then((data) => {
+			dispatch(setIsFetching(false))
+			dispatch(setUsers(data.items))
+			dispatch(setTotalUsersCount(data.totalCount))
+		})
+	}
 
 export default usersReduser
