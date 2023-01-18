@@ -3,7 +3,7 @@ import s from './Users.module.css'
 import userPhoto from './../../assets/images/user.png'
 import { UserType } from '../../redux/reducers/users-reduser'
 import { NavLink } from 'react-router-dom'
-import { followAPI } from '../../api/api'
+import { usersAPI } from '../../api/api'
 
 export type UsersPropsType = {
 	onPageNumberChange: (page: number) => void
@@ -55,7 +55,7 @@ export function Users(props: UsersPropsType) {
 									className={s.follow_btn}
 									onClick={() => {
 										props.toggleFollowingProgress(u.id, true)
-										followAPI.unFollow(u.id).then((data) => {
+										usersAPI.unfollow(u.id).then((data) => {
 											if (data.resultCode === 0) props.unfollow(u.id)
 											props.toggleFollowingProgress(u.id, false)
 										})
@@ -69,7 +69,7 @@ export function Users(props: UsersPropsType) {
 									className={s.follow_btn}
 									onClick={() => {
 										props.toggleFollowingProgress(u.id, true)
-										followAPI.follow(u.id).then((data) => {
+										usersAPI.follow(u.id).then((data) => {
 											if (data.resultCode === 0) props.follow(u.id)
 											props.toggleFollowingProgress(u.id, false)
 										})
