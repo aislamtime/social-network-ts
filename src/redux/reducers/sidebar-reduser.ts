@@ -1,10 +1,8 @@
 export type SidebarType = {}
 const initialState: SidebarType = {}
 
-const sedebarReduser = (state: SidebarType = initialState, action: SidebarActionsType) => {
+export const sidebarReduser = (state: SidebarType = initialState, action: ActionTypes): SidebarType => {
 	return state
 }
 
-type SidebarActionsType = any
-
-export default sedebarReduser
+type ActionTypes = any

@@ -1,5 +1,3 @@
-//import { AllActionsType, DialogsPageType } from '../store'
-
 const CHANGE_MESSAGE_TEXT = 'CHANGE-MESSAGE-TEXT'
 const SEDN_MESSAGE = 'SEND-MESSAGE'
 
@@ -35,7 +33,7 @@ const initialState: DialogsPageType = {
 	newMessageText: '',
 }
 
-const dialogsReduser = (state: DialogsPageType = initialState, action: DialogsActionsType): DialogsPageType => {
+export const dialogsReduser = (state: DialogsPageType = initialState, action: ActionTypes): DialogsPageType => {
 	switch (action.type) {
 		case CHANGE_MESSAGE_TEXT:
 			return {
@@ -54,9 +52,8 @@ const dialogsReduser = (state: DialogsPageType = initialState, action: DialogsAc
 	}
 }
 
-type DialogsActionsType = ChangeMessageTextACType | SendMessageACType
+type ActionTypes = ReturnType<typeof changeMessageTextAC> | ReturnType<typeof sendMessageAC>
 
-export type ChangeMessageTextACType = ReturnType<typeof changeMessageTextAC>
 export const changeMessageTextAC = (newMessageText: string) => {
 	return {
 		type: CHANGE_MESSAGE_TEXT,
@@ -64,11 +61,8 @@ export const changeMessageTextAC = (newMessageText: string) => {
 	} as const
 }
 
-export type SendMessageACType = ReturnType<typeof sendMessageAC>
 export const sendMessageAC = () => {
 	return {
 		type: SEDN_MESSAGE,
 	} as const
 }
-
-export default dialogsReduser

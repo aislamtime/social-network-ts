@@ -66,7 +66,7 @@ const initialState: ProfilePageType = {
 	newPostText: '',
 }
 
-const profileReduser = (state: ProfilePageType = initialState, action: ProfileActionsType): ProfilePageType => {
+export const profileReduser = (state: ProfilePageType = initialState, action: ActionTypes): ProfilePageType => {
 	switch (action.type) {
 		case ADD_POST: {
 			const newPost = {
@@ -98,16 +98,17 @@ const profileReduser = (state: ProfilePageType = initialState, action: ProfileAc
 	}
 }
 
-export type ProfileActionsType = AddPostACType | ChangeNewPostTextACType | SetUserProfileACType
+export type ActionTypes =
+	| ReturnType<typeof addPostAC>
+	| ReturnType<typeof changeNewPostTextAC>
+	| ReturnType<typeof setUserProfileAC>
 
-type AddPostACType = ReturnType<typeof addPostAC>
 export const addPostAC = () => {
 	return {
 		type: ADD_POST,
 	} as const
 }
 
-type ChangeNewPostTextACType = ReturnType<typeof changeNewPostTextAC>
 export const changeNewPostTextAC = (changePostText: string) => {
 	return {
 		type: CHANGE_NEW_POST_TEXT,
@@ -115,12 +116,9 @@ export const changeNewPostTextAC = (changePostText: string) => {
 	} as const
 }
 
-type SetUserProfileACType = ReturnType<typeof setUserProfileAC>
 export const setUserProfileAC = (profile: ProfileType) => {
 	return {
 		type: SET_USER_PROFILE,
 		profile,
 	} as const
 }
-
-export default profileReduser

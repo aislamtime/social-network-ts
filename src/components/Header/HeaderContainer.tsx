@@ -2,7 +2,7 @@ import { Dispatch } from '@reduxjs/toolkit'
 import axios from 'axios'
 import React from 'react'
 import { connect } from 'react-redux'
-import { setAuthUserDataAC } from '../../redux/reducers/auth-reduser'
+import { setAuthUserData } from '../../redux/reducers/auth-reduser'
 import { RootStateType } from '../../redux/redux-store'
 import { Header } from './Header'
 
@@ -27,7 +27,6 @@ const mstp = (state: RootStateType) =>
 	} as const)
 const mdtp = (dispatch: Dispatch) =>
 	({
-		setAuthUserData: (userId: number, email: string, login: string) =>
-			dispatch(setAuthUserDataAC(userId, email, login)),
+		setAuthUserData: (userId: number, email: string, login: string) => dispatch(setAuthUserData(userId, email, login)),
 	} as const)
 export default connect(mstp, mdtp)(HeaderContainer)
