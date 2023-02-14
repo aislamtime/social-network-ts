@@ -3,15 +3,17 @@ import './App.css'
 import { Sidebar } from './components/Sidebar/Sidebar'
 import { Content } from './components/Content/Content'
 import HeaderContainer from './components/Header/HeaderContainer'
+import { Header } from './components'
 
 function App() {
-	return (
-		<div className='app-wrapper'>
-			<HeaderContainer />
-			<Sidebar />
-			<Content />
-		</div>
-	)
+  return (
+    <div className='app-wrapper'>
+      <Header />
+      {/*<HeaderContainer />*/}
+      <Sidebar />
+      <Content />
+    </div>
+  )
 }
 
 export default App
