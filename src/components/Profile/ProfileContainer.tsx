@@ -19,7 +19,7 @@ class ProfileContainer extends React.Component<ProfilePropsType, ProfileType> {
   }
 
   render() {
-    return <Profile profile={this.props.profile} />
+    return <div></div> //<Profile profile={this.props.profile} />
   }
 }
 
@@ -27,7 +27,7 @@ export type ProfilePropsType = (ReturnType<typeof mstp> & ReturnType<typeof mdtp
 
 const mstp = (state: RootStateType) => {
   return {
-    profile: state.profilePage.profile,
+    profile: state.profile.profile,
   } as const
 }
 const mdtp = (dispatch: Dispatch) => {

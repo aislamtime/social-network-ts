@@ -9,8 +9,8 @@ export type MyPostsPropsType = ReturnType<typeof mapStateToProps> &
 
 const mapStateToProps = (state: RootStateType) =>
   ({
-    posts: state.profilePage.posts,
-    inputValue: state.profilePage.newPostText,
+    posts: state.profile.posts,
+    inputValue: state.profile.newPostText,
   } as const)
 
 const mapDispatchToProps = (dispatch: Dispatch) =>
