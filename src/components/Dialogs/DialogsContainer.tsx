@@ -18,7 +18,7 @@ type MapDispatchPropsType = {
 
 export type DialogsPropsType = MapStatePropsType & MapDispatchPropsType
 
-const mapStateToProps = (state: RootStateType) => ({ dialogsPage: state.dialogsPage })
+const mapStateToProps = (state: RootStateType) => ({ dialogsPage: state.dialogs })
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   changeInputValue: (newValue: string) => dispatch(changeMessageTextAC(newValue)),
   sendMessage: () => dispatch(sendMessageAC()),

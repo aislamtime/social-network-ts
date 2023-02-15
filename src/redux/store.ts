@@ -8,12 +8,13 @@ import { sidebarReduser } from './reducers/sidebar-reduser'
 import { usersReduser } from './reducers/users-reduser'
 import auth from './slices/auth/slice'
 import profile from './slices/profile/slice'
+import dialogs from './slices/dialogs/slice'
 
 export const store = configureStore({
   reducer: {
     profile,
     usersPage: usersReduser,
-    dialogsPage: dialogsReduser,
+    dialogs,
     sidebar: sidebarReduser,
     auth,
   },
