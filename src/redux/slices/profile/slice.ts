@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { fetchUserProfile } from './asyncActions'
 import { ProfilePageType, ProfileType } from './types'
 
 const initialState: ProfilePageType = {
@@ -50,6 +51,11 @@ const profileSlice = createSlice({
     setUserProfile(state, action: PayloadAction<ProfileType>) {
       state.profile = action.payload
     },
+  },
+  extraReducers(builder) {
+    builder.addCase(fetchUserProfile.fulfilled, (state, action: PayloadAction<ProfileType>) => {
+      state.profile = action.payload
+    })
   },
 })
 

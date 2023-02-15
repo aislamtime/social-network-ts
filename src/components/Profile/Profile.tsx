@@ -1,13 +1,22 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
 
+import { fetchUserProfile } from '../../redux/slices/profile/asyncActions'
 import { profileSelector } from '../../redux/slices/profile/selectors'
+import { useAppDispatch } from '../../redux/store'
 import { Preloader } from '../common/Preloader/Preloader'
 import { MyPosts } from './MyPosts/MyPosts'
 import s from './Profile.module.css'
 
 export const Profile: React.FC = () => {
   const { profile } = useSelector(profileSelector)
+  const dispatch = useAppDispatch()
+  const { userId } = useParams()
+
+  React.useEffect(() => {
+    if (userId) dispatch(fetchUserProfile(userId))
+  }, [])
 
   if (!profile) {
     return <Preloader />
