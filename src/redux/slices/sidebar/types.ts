@@ -1,2 +1,1 @@
-sele
 export type SidebarStateType = {}
