@@ -2,8 +2,7 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 
 import s from './Content.module.css'
-import { News, Music, Settings, Profile, Dialogs } from '../'
-import UsersConstainer from '../Users/UsersContainer'
+import { News, Music, Settings, Profile, Dialogs, Users } from '../'
 
 export function Content() {
   return (
@@ -14,7 +13,7 @@ export function Content() {
         <Route path='/news' element={<News />} />
         <Route path='/music' element={<Music />} />
         <Route path='/settings' element={<Settings />} />
-        <Route path='/users' element={<UsersConstainer />} />
+        <Route path='/users' element={<Users />} />
       </Routes>
     </div>
   )

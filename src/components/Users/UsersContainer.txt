@@ -1,7 +1,7 @@
 import { Dispatch } from '@reduxjs/toolkit'
 import React from 'react'
 import { connect } from 'react-redux'
-import { follow, unfollow, setCurrentPage, getUsers } from '../../redux/reducers/users-reduser'
+//import { follow, unfollow, setCurrentPage, getUsers } from '../../redux/reducers/users-reduser'
 import { RootStateType } from '../../redux/store'
 import { Preloader } from '../common/Preloader/Preloader'
 import { Users } from './Users'
