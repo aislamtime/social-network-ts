@@ -1,0 +1,2 @@
+sele
+export type SidebarStateType = {}
