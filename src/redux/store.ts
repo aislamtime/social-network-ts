@@ -3,14 +3,15 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 
 //import { authReduser } from './reducers/auth-reduser'
 import { dialogsReduser } from './reducers/dialogs-reduser'
-import { profileReduser } from './reducers/profile-reduser'
+//import { profileReduser } from './reducers/profile-reduser'
 import { sidebarReduser } from './reducers/sidebar-reduser'
 import { usersReduser } from './reducers/users-reduser'
 import auth from './slices/auth/slice'
+import profile from './slices/profile/slice'
 
 export const store = configureStore({
   reducer: {
-    profilePage: profileReduser,
+    profile,
     usersPage: usersReduser,
     dialogsPage: dialogsReduser,
     sidebar: sidebarReduser,
