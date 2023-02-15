@@ -1,10 +1,11 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
+import { v1 as uuidv1 } from 'uuid'
 
-import { DialogType, MessageType } from '../../redux/reducers/dialogs-reduser'
 import { dialogsSelector } from '../../redux/slices/dialogs/selectors'
 import { changeMessageText, sendMessage } from '../../redux/slices/dialogs/slice'
+import { DialogType, MessageType } from '../../redux/slices/dialogs/types'
 import { useAppDispatch } from '../../redux/store'
 import s from './Dialogs.module.css'
 
@@ -14,12 +15,15 @@ export const Dialogs: React.FC = () => {
 
   const onChangeInputValue = (value: string) => dispatch(changeMessageText(value))
   const onSendMessage = () => {
-    dispatch(sendMessage())
+    const messageId = uuidv1()
+    dispatch(sendMessage(messageId))
   }
 
-  const dialogsElements = dialogsPage.dialogs.map((el) => <DialogsItem name={el.name} id={el.id} />)
+  const dialogsElements = dialogsPage.dialogs.map((el) => (
+    <DialogsItem key={el.id} name={el.name} id={el.id} />
+  ))
   const messagesElements = dialogsPage.messages.map((el) => (
-    <Message id={el.id} message={el.message} />
+    <Message key={el.id} id={el.id} message={el.message} />
   ))
   return (
     <div className={s.dialogs}>

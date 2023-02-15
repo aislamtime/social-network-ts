@@ -25,10 +25,10 @@ const initialState: ProfilePageType = {
     },
   },
   posts: [
-    { id: 1, message: 'I am from Mars', likesCount: 13 },
-    { id: 2, message: 'My name is Alesha', likesCount: 18 },
-    { id: 3, message: 'Hi, how are you?', likesCount: 16 },
-    { id: 4, message: "Hey, it's my first app! ", likesCount: 32 },
+    { id: '1', message: 'I am from Mars', likesCount: 13 },
+    { id: '2', message: 'My name is Alesha', likesCount: 18 },
+    { id: '3', message: 'Hi, how are you?', likesCount: 16 },
+    { id: '4', message: "Hey, it's my first app! ", likesCount: 32 },
   ],
   newPostText: '',
 }
@@ -37,13 +37,14 @@ const profileSlice = createSlice({
   name: 'profile',
   initialState,
   reducers: {
-    addPost(state) {
+    addPost(state, action: PayloadAction<string>) {
       const newPost = {
-        id: 5, //!fix
+        id: action.payload,
         message: state.newPostText,
         likesCount: 0,
       }
       state.posts.push(newPost)
+      state.newPostText = ''
     },
     changeNewPostText(state, action: PayloadAction<string>) {
       state.newPostText = action.payload

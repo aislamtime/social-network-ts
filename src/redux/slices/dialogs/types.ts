@@ -1,9 +1,9 @@
 export type MessageType = {
-  id: number
+  id: string
   message: string
 }
 export type DialogType = {
-  id: number
+  id: string
   name: string
 }
 export type DialogsPageType = {
